@@ -24,7 +24,7 @@ export default function HotRightNow ( ) {
 ]
     return (
         <>
-        <Text textAlign='center' fontSize={{base :'22px', md : '28px', lg : '35px'}} letterSpacing={{base : '2px'}} fontWeight='600' mt={{base  :'20px', md: '30px'}}>HOT RIGHT NOW</Text>
+        <Text textAlign='center' fontSize={{base :'22px', md : '28px', lg : '35px'}} letterSpacing={{base : '2px'}} fontWeight='600' mt={{base  :'20px', md: '30px', lg: '70px'}}>HOT RIGHT NOW</Text>
         <CarouselComponent data={data} itemsBase={2} itemsMd={3} itemsLg={4}/>
         </>
     )

@@ -2,6 +2,7 @@ import { Box, Text } from "@chakra-ui/layout";
 import BreakOutBrands from "../Components/BreakOutBrands";
 import HotRightNow from "../Components/HotRightNow";
 import Navbar from "../Components/Navbar";
+import SignUpSection from "../Components/SignUpSection";
 import TrendingNow from "../Components/TrendingNow";
 import CarouselComponent from "../CustomComponents/Carousel";
 import Slideshow from "../CustomComponents/SideShow";
@@ -47,6 +48,10 @@ export default function HomePage ( ) {
             <BreakOutBrands/>
             <TrendingNow/>
             <HotRightNow/>
+        </Box>
+
+        <Box mt={{base : '40px', md : '50px', lg: '120px'}}>
+            <SignUpSection/>
         </Box>
         </>
     )
