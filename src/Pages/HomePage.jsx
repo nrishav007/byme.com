@@ -1,6 +1,8 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Box} from "@chakra-ui/layout";
 import BreakOutBrands from "../Components/BreakOutBrands";
+import Footer from "../Components/Footer";
 import HotRightNow from "../Components/HotRightNow";
+import MostWanted from "../Components/MostWanted";
 import Navbar from "../Components/Navbar";
 import SignUpSection from "../Components/SignUpSection";
 import TrendingNow from "../Components/TrendingNow";
@@ -50,9 +52,17 @@ export default function HomePage ( ) {
             <HotRightNow/>
         </Box>
 
+        <Box>
+            <MostWanted/>
+        </Box>
+
         <Box mt={{base : '40px', md : '50px', lg: '120px'}}>
             <SignUpSection/>
         </Box>
+
+        <Box mt={{base :'40px'}}>
+            <Footer/>
+        </Box>      
         </>
     )
 }

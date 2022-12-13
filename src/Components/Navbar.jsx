@@ -24,7 +24,7 @@ export default function Navbar( ) {
 
                <Flex width={{base : '0', md : '60%', lg :'75%'}} border={'1px solid black'} padding='5px' alignItems='center'>
                 <Text ml='10px'><BsSearch/></Text>
-                <Input borderRadius='0px' border='0px' placeholder='Search' variant="unstyled" padding='5px'/>
+                <Input borderRadius='0px' border='0px' placeholder='SEARCH' variant="unstyled" padding='5px'/>
                </Flex>
 
                <Flex width={{base : "", md  : '20%', lg :'10%'}} justifyContent='space-between'>
