@@ -25,14 +25,14 @@ export default function CarouselComponent ({data,itemsBase,itemsMd,itemsLg}) {
         <>
         <Box  width={{base : '95%', md : '95%', lg : '90%'}} m='auto' mt={{base :'10px'}} >
             <Carousel
-                swipeable={false}
-                draggable={false}
-                showDots={true}
+                swipeable={true}
+                draggable={true}
+                showDots={false}
                 responsive={responsive}
                 ssr={true} // means to render carousel on server-side.
                 infinite={true}
                   // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-                autoPlaySpeed={1000}
+                autoPlaySpeed={2000}
                 keyBoardControl={true}
                 customTransition="all .5"
                 transitionDuration={500}
@@ -45,7 +45,7 @@ export default function CarouselComponent ({data,itemsBase,itemsMd,itemsLg}) {
                 {data.length > 0 && data.map((elem)=>{
                     return <Box key={elem.id} w={{base : '95%'}} m='auto'>
                         <Text>{elem.text}</Text>
-                        <Image src={elem.image} m='auto'/>
+                        <Image src={elem.image} m='auto' draggable="false"/>
                     </Box>
                 })}
             </Carousel>

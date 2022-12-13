@@ -13,3 +13,10 @@
     display: inline-block;
     width: 100%;
   }
+
+  .ChackraNavBar{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    background-color: white;
+  }

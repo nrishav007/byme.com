@@ -40,6 +40,7 @@ export default function HomePage ( ) {
     return (
         <>
         <Navbar/>
+        <Box height={'100px'}></Box>
         <Box>
             <Slideshow data={colors} cwithBase='95%' cwidthMd='90%' cwidthLg='95%' ImageWBase='90%' ImageWMd='95%' ImageWLg='95%'/>
         </Box>
