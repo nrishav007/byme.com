@@ -10,19 +10,23 @@ import {
     Text,
     Alert,
   } from "@chakra-ui/react";
-  import {  useState } from "react";
+  import {  useContext, useState } from "react";
   
-  import { Link } from "react-router-dom";
+  import { Link,useNavigate } from "react-router-dom";
   
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
-  import { BsApple } from "react-icons/bs";
+  // import { BsApple } from "react-icons/bs";
+// import { auth } from "./firebase_config";
+import { AuthContext } from "../context/AppContext";
   
   export default function Signup() {
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const navigateUser=useNavigate()
   
     // const signup = async () => {
     //   try {
@@ -40,25 +44,25 @@ import {
     //   }
     // };
   
-    // const handleSubmit = (e) => {
-    //   alert("SIGN UP SUCCESSFULL");
-    // };
-    // const handlegoogleSignUp = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //     await googleSignIn();
-    //     navigateUser("/login");
-    //   } catch (err) {
-    //     Alert(err.message);
-    //   }
-    // };
-    // const handleFacebookSignUp = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //     await facebookSignIn();
-    //     navigateUser("/profile");
-    //   } catch (err) {}
-    // };
+    const handleSubmit = (e) => {
+      // alert("SIGN UP SUCCESSFULL");
+    };
+    const handlegoogleSignUp = async (e) => {
+      e.preventDefault();
+      try {
+        await googleSignIn();
+        navigateUser("/");
+      } catch (err) {
+        Alert(err.message);
+      }
+    };
+    const handleFacebookSignUp = async (e) => {
+      e.preventDefault();
+      try {
+        await facebookSignIn();
+        navigateUser("/profile");
+      } catch (err) {}
+    };
   
     return (
       <Box
@@ -98,21 +102,22 @@ import {
                   <Button
                     variant="outline"
                     colorScheme={"#50b6ff"}
+                    onClick={handlegoogleSignUp}
                   >
                     <FcGoogle />
                   </Button>
                  
                 </Box>
-                <Button variant="outline" colorScheme={"#50b6ff"}>
+                <Button onClick={handleFacebookSignUp} variant="outline" colorScheme={"#50b6ff"}>
                   <BsFacebook />
                 </Button>
                 <Box>
                 </Box>
-                <Button variant="outline" colorScheme={"#50b6ff"}>
+                {/* <Button variant="outline" colorScheme={"#50b6ff"}>
                   <BsApple />
-                </Button>
-                <Box>
-                </Box>
+                </Button> */}
+                {/* <Box>
+                </Box> */}
               </Flex>
               <br />
               <Text variant={"ghost"}>Or</Text>
