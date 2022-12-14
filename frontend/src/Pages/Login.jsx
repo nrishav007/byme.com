@@ -12,62 +12,49 @@ import {
     AlertIcon,
     Heading,
   } from "@chakra-ui/react";
-  import React, { useState } from "react";
+  import React, { useState,useContext } from "react";
   
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
   import { BsApple } from "react-icons/bs";
-  
+  import { AuthContext } from "../context/AppContext";
   import { Link, useNavigate } from "react-router-dom";
+
   
   export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const { googleSignIn, facebookSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    
   
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   setError("");
-    //   setLoading(true);
-    //   try {
-    //     await logIn(email, password);
-    //     setLoading(false);
-    //     navigate("/profile");
-    //   } catch (err) {
-    //     setLoading(false);
-    //     // if(password.length<=5){
-    //     //   Alert("Password length is small");
-    //     // }
-    //     if (err.code === "User not Found!!!!Please use correct login Credentials") {
-    //       setError(err.message);
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log(email,password)
+    };
+    const handleGoogleLogin = async (e) => {
+      e.preventDefault();
+      try {
+     const user= await googleSignIn();
+     console.log(user);
+        navigate("/");
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
   
-    //     } else setError(err.message);
-  
-    //   }
-    // };
-    // const handleGoogleLogin = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //  const user=   await googleSignIn();
-    //  console.log(user);
-    //     navigate("/profile");
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // };
-  
-    // const handleFBlogin = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //    const fbuser= await facebookSignIn();
-    //    console.log(fbuser);
-    //     navigate("/profile");
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // };
+    const handleFBlogin = async (e) => {
+      e.preventDefault();
+      try {
+       const fbuser= await facebookSignIn();
+       console.log(fbuser);
+        navigate("/");
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
   
     return (
       <Box
@@ -94,7 +81,7 @@ import {
             <Heading variant={"solid"}>LOG IN</Heading>
             <br />
             <Box></Box>
-            <form>
+            <form onSubmit={handleSubmit}>
               {error && (
                 <Alert status="error">
                   <AlertIcon />
@@ -159,12 +146,12 @@ import {
                     direction={{ base: "column", md: "column", lg: "row" }}
                   >
                     <Box>
-                      <Button variant="outline" colorScheme={"#50b6ff"}>
+                      <Button onClick={handleGoogleLogin} variant="outline" colorScheme={"#50b6ff"}>
                         <FcGoogle />
                       </Button>
                     </Box>
                     <Box>
-                      <Button variant="outline" colorScheme={"#50b6ff"}>
+                      <Button onClick={handleFBlogin} variant="outline" colorScheme={"#50b6ff"}>
                         <BsFacebook />
                       </Button>
                     </Box>
