@@ -12,8 +12,6 @@ export default function WomensPage ( ) {
             Womens : store.Womens
         }
     }, shallowEqual);
-
-    console.log(isError,isLoading,Womens)
     return (
         <>
         <Navbar/>
