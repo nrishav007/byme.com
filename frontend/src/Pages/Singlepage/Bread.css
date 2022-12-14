@@ -1,0 +1,12 @@
+.nav-links{
+    margin-bottom: 10px;
+}
+.nav-links a {
+    text-transform: capitalize;
+    color: yellow;
+    transition: 0.3s;
+}
+
+.nav-links a:hover{
+  
+}
