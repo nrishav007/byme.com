@@ -9,7 +9,6 @@ import AuthContextProvider from './context/AppContext';
 import {MyStore} from "./Redux/Store"
 import { Provider } from 'react-redux';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <ChakraProvider>
