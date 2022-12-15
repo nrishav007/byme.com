@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import WomenCoatsPage from "../Components/WomenCoats";
+import WomenSwimWear from "../Components/WomensSwim";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
@@ -16,7 +17,7 @@ export default function AllRoutes ( ) {
             <Route path="/men" element={<MensPage/>}/>
             <Route path="/women/all-clothing" element={<WomensPage/>}/>
             <Route path="/women/coats" element={<WomenCoatsPage/>}/>
-            
+            <Route path="/women/beach-wear" element={<WomenSwimWear/>}/>
         </Routes>
         </> 
     )

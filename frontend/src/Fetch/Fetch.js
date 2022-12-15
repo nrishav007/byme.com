@@ -39,3 +39,11 @@ export const WomensCoatsData = (page=1,setTotalPage) =>{
         return res
     })
 }
+
+export const WomensSwimWearData = (page=1,setTotalPage) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=beachwear&page=${page}&limit=18`)
+    .then((res)=>{
+        setTotalPage(Number(res.headers.get('X-Total-Count')))
+        return res
+    })
+}

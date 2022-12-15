@@ -8,6 +8,7 @@ const InitialData = {
     HotNow : [ ],
     WomensAll : [ ],
     WomensCoats : [ ],
+    WomensBeach : [ ],
     Mens : [ ],
     isLoading : false,
     isError : false
@@ -240,6 +241,36 @@ export default function Reducer (state=InitialData, action) {
             }
         }
 
+
+
+
+        case types.GET_WOMENS_BEACH_REQUEST : {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+
+        
+        case types.GET_WOMENS_BEACH_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                WomensBeach : payload,
+                isError : false
+            }
+        }
+
+        
+        case types.GET_WOMENS_BEACH_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isError : true,
+                WomensBeach : [ ]
+            }
+        }
 
 
 

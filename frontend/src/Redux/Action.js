@@ -169,6 +169,28 @@ export const GetWomenCoatsFailure = ( ) =>{
 
 
 
+export const GetWomenSwimRequest = ( ) =>{
+    return {
+        type : types.GET_WOMENS_BEACH_REQUEST
+    }
+}
+
+export const GetWomenSwimSuccess = (payload) =>{
+    return {
+        type : types.GET_WOMENS_BEACH_SUCCESS,
+        payload,
+    }
+}
+
+export const GetWomenSwimFailure = ( ) =>{
+    return {
+        type : types.GET_WOMENS_BEACH_FAILURE
+    }
+}
+
+
+
+
 export const GetMensDataRequest = ( ) =>{
     return {
         type : types.GET_MENS_DATA_REQUEST

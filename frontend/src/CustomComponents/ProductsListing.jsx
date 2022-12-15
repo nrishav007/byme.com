@@ -6,6 +6,7 @@ export default function ProductsListing ({data,isLoading,isError}) {
     return (
         <>
         {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
+        <Text textAlign='center'>{isError && 'Oops!! Something  Went Wrong'}</Text>
         <SimpleGrid columns={[2,2,3,6]}  width={{base : '95%'}} m='auto' rowGap={{base : '20px', lg: '50px'}} columnGap={{base :'20px', lg : '30px'}}>
             {data.length > 0 && data.map((elem)=>{
                 return <Box  padding='10px' lineHeight={{base : '30px'}} key={elem._id}>
