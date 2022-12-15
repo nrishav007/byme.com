@@ -1,22 +1,22 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
-import { Link, useSearchParams } from "react-router-dom"
-import Navbar from "./Navbar"
+import { Box } from "@chakra-ui/react"
 import {useSelector,useDispatch} from "react-redux"
-import { WomensCoatsData } from "../Fetch/Fetch"
-import { GetWomenCoatsFailure, GetWomenCoatsRequest, GetWomenCoatsSuccess } from "../Redux/Action"
+import { WomensHosieryrData} from "../Fetch/Fetch"
+import { GetWomenHosieryFailure, GetWomenHosieryRequest, GetWomenHosierySucccess } from "../Redux/Action"
 import { useEffect, useState } from "react"
 import ProductsListing from "../CustomComponents/ProductsListing"
 import { getCurrentPage } from "./WomensAllClothing"
 import Pagination from "../CustomComponents/Pagination"
-import ProgressLoader from "../CustomComponents/Progress"
 import Footer from "./Footer"
 import TopSection from "../CustomComponents/TopSection"
-export default function WomenCoatsPage ( ) {
-    const {isLoading,isError,WomensCoats} = useSelector((x)=>{
+import { useSearchParams } from "react-router-dom"
+import ProgressLoader from "../CustomComponents/Progress"
+
+export default function WomenHosiery ( ) {
+    const {isLoading,isError,WomensHosiery} = useSelector((x)=>{
         return{
             isLoading : x.isLoading,
             isError : x.isError,
-            WomensCoats : x.WomensCoats
+            WomensHosiery : x.WomensHosiery
         }
     })
     const Dispatch = useDispatch( );
@@ -26,28 +26,28 @@ export default function WomenCoatsPage ( ) {
     const [page,setPage] = useState(initialPage);
     const [totalPage,setTotalPage] = useState(0);
 
-
-    const handleWomensCoat = ( ) =>{
-        Dispatch(GetWomenCoatsRequest( ))
-        WomensCoatsData(page,setTotalPage).then((res)=>{
-            Dispatch(GetWomenCoatsSuccess(res.data))
+    const handleWomenHosiery = ( ) =>{
+        GetWomenHosieryRequest( );
+        WomensHosieryrData(page,setTotalPage).then((res)=>{
+            Dispatch(GetWomenHosierySucccess(res.data))
         })
-        .catch((err) => Dispatch(GetWomenCoatsFailure(err)))
+        .catch((err)=>Dispatch(GetWomenHosieryFailure(err)))
     }
 
     useEffect(( ) =>{
-        handleWomensCoat( )
-    }, [ page])
+        handleWomenHosiery( )
+    }, [page])
 
     useEffect(( ) =>{
         setSearchParams({page})
     },[page])
+
     return (
         <>
         <TopSection/>
 
         <Box mt={{base :'20px'}}>
-            <ProductsListing data={WomensCoats} isLoading={isLoading} isError={isError}/>
+            <ProductsListing data={WomensHosiery} isLoading={isLoading} isError={isError}/>
         </Box>
 
         <Box>
@@ -58,7 +58,6 @@ export default function WomenCoatsPage ( ) {
         <Box>
             <Footer/>
         </Box>
-
         </>
     )
 }

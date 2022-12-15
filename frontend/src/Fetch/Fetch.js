@@ -25,7 +25,7 @@ export const HotRightNowData = ( ) =>{
 }
 
 export const WomensAllClothingData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=dresses&page=${page}&limit=18`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=dresses&page=${page}&limit=36`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -33,7 +33,7 @@ export const WomensAllClothingData = (page=1,setTotalPage) =>{
 }
 
 export const WomensCoatsData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=coats&page=${page}&limit=18`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=coats&page=${page}&limit=36`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -41,7 +41,33 @@ export const WomensCoatsData = (page=1,setTotalPage) =>{
 }
 
 export const WomensSwimWearData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=beachwear&page=${page}&limit=18`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=beachwear&page=${page}&limit=36`)
+    .then((res)=>{
+        setTotalPage(Number(res.headers.get('X-Total-Count')))
+        return res
+    })
+}
+
+export const WomensHosieryrData = (page=1,setTotalPage) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=hosiery&page=${page}&limit=36`)
+    .then((res)=>{
+        setTotalPage(Number(res.headers.get('X-Total-Count')))
+        return res
+    })
+}
+
+
+export const WomensJacketsData = (page=1,setTotalPage) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jackets&page=${page}&limit=36`)
+    .then((res)=>{
+        setTotalPage(Number(res.headers.get('X-Total-Count')))
+        return res
+    })
+}
+
+
+export const WomensJeansData = (page=1,setTotalPage) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jeans&page=${page}&limit=36`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res

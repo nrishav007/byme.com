@@ -51,8 +51,8 @@ export default function WomenSwimWear ( ) {
         </Box>
 
         <Box>
-            {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
             <Pagination current={page} onChange={(page) => setPage(page)}/>
+            {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
         </Box>
 
         <Box>

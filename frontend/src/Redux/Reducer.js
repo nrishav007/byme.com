@@ -9,6 +9,9 @@ const InitialData = {
     WomensAll : [ ],
     WomensCoats : [ ],
     WomensBeach : [ ],
+    WomensHosiery : [ ],
+    WJackets : [ ],
+    WomensJeans : [],
     Mens : [ ],
     isLoading : false,
     isError : false
@@ -19,6 +22,7 @@ export default function Reducer (state=InitialData, action) {
 
     switch(type){
 
+ //SideShow
         case types.GET_HOME_SLIDESHOW_REQUEST : {
             return {
                 ...state,
@@ -47,6 +51,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 
+ //MainBody
         case types.GET_HOME_MAINBODY_REQUEST : {
             return {
                 ...state,
@@ -74,7 +79,7 @@ export default function Reducer (state=InitialData, action) {
         }
 
 
-
+//MainBody1
         case types.GET_HOME_MAINBODY1_REQUEST : {
             return {
                 ...state,
@@ -102,7 +107,7 @@ export default function Reducer (state=InitialData, action) {
         }
 
         
-
+//BreakOutBrands
         case  types.GET_BREAKOUT_BRANDS_REQUEST : {
             return {
                 ...state,
@@ -131,6 +136,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 
+//TrendingNow
         case  types.GET_TRENDING_NOW_REQUEST : {
             return {
                 ...state,
@@ -159,6 +165,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 
+//HotNow
         case types.GET_HOTNOW_REQUEST : {
             return {
                 ...state,
@@ -186,7 +193,7 @@ export default function Reducer (state=InitialData, action) {
         }
 
 
-        
+//WomensAllData  
         case types.GET_WOMENS_ALL_DATA_REQUEST : {
             return {
                 ...state,
@@ -215,6 +222,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 
+//WomensCoat
         case types.GET_WOMENS_COATS_REQUEST : {
             return {
                 ...state,
@@ -243,7 +251,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 
-
+//WomensBeach
         case types.GET_WOMENS_BEACH_REQUEST : {
             return {
                 ...state,
@@ -274,11 +282,96 @@ export default function Reducer (state=InitialData, action) {
 
 
 
+//WomensHosiery
+        case types.GET_WOMENS_HOSIERY_REQUEST : {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+
+        
+        case types.GET_WOMENS_HOSIERY_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                WomensHosiery : payload,
+                isError : false
+            }
+        }
+
+        
+        case types.GET_WOMENS_HOSIERY_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isError : true,
+                WomensHosiery : [ ],
+            }
+        }
 
 
 
+//WomenJackets
+        case types.GET_WOMENS_JACKETS_REQUEST : {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_JACKETS_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                WJackets : payload,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_JACKETS_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isError : true,
+                WJackets : [ ]
+            }
+        }
 
 
+
+//WomenJeans
+        case types.GET_WOMENS_JEANS_REQUEST : {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_JEANS_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                WomensJeans : payload,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_JEANS_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isError : true,
+                WomensJeans : [ ]
+            }
+        }
+
+
+
+//MensALL
         case types.GET_MENS_DATA_REQUEST : {
             return {
                 ...state,

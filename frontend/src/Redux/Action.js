@@ -1,6 +1,6 @@
 import * as types from "./ActionTypes"
 
-
+//SlideShow
 export const GetHomeSlideShowRequest = ( ) =>{
     return {
         type : types.GET_HOME_SLIDESHOW_REQUEST
@@ -21,7 +21,7 @@ export const GetHomeSlideShowFailure = ( ) =>{
 }
 
 
-
+//MainBody
 export const GetHomeMainBodyRequest = ( ) =>{
     return {
         type : types.GET_HOME_MAINBODY_REQUEST
@@ -42,7 +42,7 @@ export const GetHomeMainBodyFailure = ( ) =>{
 }
 
 
-
+//MainBody1
 export const GetHomeMainBody1Request = ( ) =>{
     return {
         type : types.GET_HOME_MAINBODY1_REQUEST
@@ -63,7 +63,7 @@ export const GetHomeMainBody1Failure = ( ) =>{
 }
 
 
-
+//BreakoutBrands
 export const GetBreakoutBrandsRequest = ( ) =>{
     return {
         type : types.GET_BREAKOUT_BRANDS_REQUEST
@@ -84,7 +84,7 @@ export const GetBreakoutBrandsFailure = ( ) =>{
 }
 
 
-
+//TrendingNow
 export const GetTrendingNowRequest = ( ) =>{
     return {
         type : types.GET_TRENDING_NOW_REQUEST
@@ -104,7 +104,7 @@ export const GetTrendingNowFailure = ( ) =>{
     }
 }
 
-
+//HotNow
 export const GetHotNowRequest = ( ) =>{
     return {
         type : types.GET_HOTNOW_REQUEST
@@ -125,7 +125,7 @@ export const GetHotNowFailure = ( ) =>{
 }
 
 
-
+//WomensAllData
 export const GetWomensALLDataRequest = ( ) =>{
     return {
         type : types.GET_WOMENS_ALL_DATA_REQUEST
@@ -147,7 +147,7 @@ export const GetWomensALLDataFailure = ( ) =>{
 };
 
 
-
+//WoemensCoats
 export const GetWomenCoatsRequest = ( ) =>{
     return {
         type : types.GET_WOMENS_COATS_REQUEST
@@ -168,7 +168,7 @@ export const GetWomenCoatsFailure = ( ) =>{
 }
 
 
-
+//WomensSwim
 export const GetWomenSwimRequest = ( ) =>{
     return {
         type : types.GET_WOMENS_BEACH_REQUEST
@@ -189,8 +189,72 @@ export const GetWomenSwimFailure = ( ) =>{
 }
 
 
+//WomensHosiery
+export const GetWomenHosieryRequest = ( ) => {
+    return {
+        type : types.GET_WOMENS_HOSIERY_REQUEST
+    }
+}
+
+export const GetWomenHosierySucccess = (payload) => {
+    return {
+        type : types.GET_WOMENS_HOSIERY_SUCCESS,
+        payload,
+
+    }
+}
+
+export const GetWomenHosieryFailure = ( ) => {
+    return {
+        type : types.GET_WOMENS_HOSIERY_FAILURE
+    }
+}
 
 
+//WomenJackets
+export const GetWomenJacketsRequest  = ( ) =>{
+    return {
+        type : types.GET_WOMENS_JACKETS_REQUEST
+    }
+}
+
+export const GetWomenJacketsSuccess  = (payload) =>{
+    return {
+        type : types.GET_WOMENS_JACKETS_SUCCESS,
+        payload,
+    }
+}
+
+export const GetWomenJacketsFailure  = ( ) =>{
+    return {
+        type : types.GET_WOMENS_JACKETS_FAILURE
+    }
+}
+
+
+
+//WomensJeans
+export const GetWomenJeansRequest  = ( ) =>{
+    return {
+        type : types.GET_WOMENS_JEANS_REQUEST
+    }
+}
+
+export const GetWomenJeansSuccess  = (payload) =>{
+    return {
+        type : types.GET_WOMENS_JEANS_SUCCESS,
+        payload,
+    }
+}
+
+export const GetWomenJeansFailure  = ( ) =>{
+    return {
+        type : types.GET_WOMENS_JEANS_FAILURE
+    }
+}
+
+
+//MensAll
 export const GetMensDataRequest = ( ) =>{
     return {
         type : types.GET_MENS_DATA_REQUEST

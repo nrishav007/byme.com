@@ -56,8 +56,8 @@ export default function WomensAllClothing ( ) {
         <Box mt='20px'>
         <ProductsListing data={WomensAll} isLoading={isLoading} isError={isError}/>
         </Box>
-        {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
         <Pagination current={page} onChange={(page) => setPage(page)} totalPage={totalPage} limit={18}/>
+        {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
         </>
     )
 }
