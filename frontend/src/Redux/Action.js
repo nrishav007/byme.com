@@ -361,3 +361,25 @@ export const GetMensJacketsFailure = ( ) =>{
         type : types.GET_MENS_JACKETS_FAILURE
     }
 };
+
+
+
+//MensJackets
+export const GetMensJeansRequest = ( ) =>{
+    return {
+        type : types.GET_MENS_JEANS_REQUEST
+    }
+};
+
+export const GetMensJeansSuccess = (payload) =>{
+    return {
+        type : types.GET_MENS_JEANS_SUCCESS,
+        payload,
+    }
+};
+
+export const GetMensJeansFailure = ( ) =>{
+    return {
+        type : types.GET_MENS_JEANS_FAILURE
+    }
+};

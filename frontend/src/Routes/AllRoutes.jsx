@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router";
 import MensBeachWear from "../Components/MensBeach";
 import MensCoatsPage from "../Components/MensCoat";
 import MensJacketsPage from "../Components/MensJackets";
+import MensJeansPage from "../Components/MensJeans";
 import MensSweaters from "../Components/MensSweaters";
 import WomenCoatsPage from "../Components/WomenCoats";
 import WomensJackets from "../Components/WomenJackets";
@@ -32,6 +33,7 @@ export default function AllRoutes ( ) {
             <Route path="/men/beach-wear" element={<MensBeachWear/>}/>
             <Route path="/men/sweaters" element={<MensSweaters/>}/>
             <Route path="/men/jackets" element={<MensJacketsPage/>}/>
+            <Route path="/men/jeans" element={<MensJeansPage/>}/>
         </Routes>
         </> 
     )
