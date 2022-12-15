@@ -273,3 +273,25 @@ export const GetMensAllFailure = ( ) =>{
         type : types.GET_MENS_ALL_FAILURE
     }
 };
+
+
+
+//MensCoats 
+export const GetMensCoatslRequest = ( ) =>{
+    return {
+        type : types.GET_MENS_COATS_REQUEST
+    }
+};
+
+export const GetMensCoatslSuccess = (payload) =>{
+    return {
+        type : types.GET_MENS_COATS_SUCCESS,
+        payload,
+    }
+};
+
+export const GetMensCoatslFailure = ( ) =>{
+    return {
+        type : types.GET_MENS_COATS_FAILURE
+    }
+};

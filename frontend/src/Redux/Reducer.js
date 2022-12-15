@@ -13,6 +13,7 @@ const InitialData = {
     WJackets : [ ],
     WomensJeans : [],
     MensAll : [ ],
+    MensCoats : [ ],
     isLoading : false,
     isError : false
 }
@@ -394,6 +395,34 @@ export default function Reducer (state=InitialData, action) {
                 ...state,
                 isLoading : false,
                 MensAll : [ ],
+                isError : true
+            }
+        }
+
+
+//MensCoats
+        case types.GET_MENS_COATS_REQUEST: {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+        
+        case types.GET_MENS_COATS_SUCCESS : {
+            return {
+                ...state,
+                MensCoats : payload,
+                isLoading : false,
+                isError : false
+            }
+        }
+        
+        case types.GET_MENS_COATS_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                MensCoats : [ ],
                 isError : true
             }
         }
