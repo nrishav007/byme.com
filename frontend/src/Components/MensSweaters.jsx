@@ -49,7 +49,7 @@ export default function MensSweaters ( ){
             <ProductsListing data={MensSweaters} isLoading={isLoading} isError={isError}/>
         </Box>
 
-        <Box>
+        <Box mt='20px'>
             <Pagination current={page} onChange={(page)=>setPage(page)}/>
             {isLoading && <ProgressLoader size='sm' colorScheme='black'/>}
         </Box>
