@@ -13,9 +13,9 @@ export default function AllRoutes ( ) {
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/men" element={<MensPage/>}/>
-            <Route path="/women" element={<WomensPage/>}/>
+            <Route path="/women/all-clothing" element={<WomensPage/>}/>
             
         </Routes>
-        </>
+        </> 
     )
 }

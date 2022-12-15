@@ -6,7 +6,7 @@ const InitialData = {
     BreakOutBrands : [ ],
     TrendingNow : [ ],
     HotNow : [ ],
-    Womens : [ ],
+    WomensAll : [ ],
     Mens : [ ],
     isLoading : false,
     isError : false
@@ -185,7 +185,7 @@ export default function Reducer (state=InitialData, action) {
 
 
         
-        case types.GET_WOMENS_DATA_REQUEST : {
+        case types.GET_WOMENS_ALL_DATA_REQUEST : {
             return {
                 ...state,
                 isLoading : true,
@@ -193,20 +193,20 @@ export default function Reducer (state=InitialData, action) {
             }
         }
 
-        case types.GET_WOMENS_DATA_SUCCESS : {
+        case types.GET_WOMENS_ALL_DATA_SUCCESS : {
             return {
                 ...state,
-                Womens : payload,
+                WomensAll : payload,
                 isLoading : false,
                 isError : false
             }
         }
 
-        case types.GET_WOMENS_DATA_FAILURE : {
+        case types.GET_WOMENS_ALL_DATA_FAILURE : {
             return {
                 ...state,
                 isLoading : false,
-                Womens : [ ],
+                WomensAll : [ ],
                 isError : true
             }
         };

@@ -126,23 +126,23 @@ export const GetHotNowFailure = ( ) =>{
 
 
 
-export const GetWomensDataRequest = ( ) =>{
+export const GetWomensALLDataRequest = ( ) =>{
     return {
-        type : types.GET_WOMENS_DATA_REQUEST
+        type : types.GET_WOMENS_ALL_DATA_REQUEST
     }
 };
 
-export const GetWomensDataSuccess = (payload) =>{
+export const GetWomensALLDataSuccess = (payload) =>{
     return {
-        type : types.GET_WOMENS_DATA_SUCCESS,
+        type : types.GET_WOMENS_ALL_DATA_SUCCESS,
         payload,
 
     }
 };
 
-export const GetWomensDataFailure = ( ) =>{
+export const GetWomensALLDataFailure = ( ) =>{
     return {
-        type : types.GET_WOMENS_DATA_FAILURE
+        type : types.GET_WOMENS_ALL_DATA_FAILURE
     }
 };
 
