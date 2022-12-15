@@ -12,7 +12,7 @@ export default function MensTopSection ( ) {
             <Link to='/men/coats'><Text>Coats</Text></Link>
             <Link to='/men/beach-wear'><Text>Beach Wear</Text></Link>
             <Link to='/men/sweaters'><Text>Sweaters</Text></Link>
-            <Link to='/men/shorts'><Text>Shorts</Text></Link>
+            <Link to='/men/jackets'><Text>Jackets</Text></Link>
             <Link to='/men/jeans'><Text>Jeans</Text></Link>
         </Flex>
         </>

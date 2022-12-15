@@ -99,3 +99,12 @@ export const MensBeachWearData = (page=1,setTotalPage) =>{
         return res
     })
 }
+
+
+export const MensSweatersData = (page=1,setTotalPage) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=sweaters&page=${page}&limit=36`)
+    .then((res)=>{
+        setTotalPage(Number(res.headers.get('X-Total-Count')))
+        return res
+    })
+}
