@@ -43,9 +43,9 @@ export default function CarouselComponent ({data,itemsBase,itemsMd,itemsLg}) {
                 itemClass="carousel-item-padding-40-px"
                 >
                 {data.length > 0 && data.map((elem)=>{
-                    return <Box key={elem.id} w={{base : '95%'}} m='auto'>
+                    return <Box key={elem.images} w={{base : '95%'}} m='auto'>
                         <Text>{elem.text}</Text>
-                        <Image src={elem.image} m='auto' draggable="false"/>
+                        <Image src={elem.images} m='auto' draggable="false"/>
                     </Box>
                 })}
             </Carousel>
