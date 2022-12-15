@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
 import "./Deatil.css"
-// import SoldIcon from "."
+
 import Bread from './Bread';
 
 const product = {
@@ -61,7 +61,7 @@ const Details = () => {
   const [width ,setwidth] = useState(0)
   const [start ,setStart] = useState(0)
   const [change ,setChange] = useState(9)
-//  const [selectcolor, setselecetedcolor] = useState(1)
+
 
   const slideRef = useRef()
 
@@ -71,7 +71,7 @@ const Details = () => {
      const childrenElementCount = slideRef.current.childElementCount;
      const width = scrollWidth/childrenElementCount
      setwidth(width)
-      // console.log({scrollWidth,childrenElementCount,width}) 
+
    },[])
 
    useEffect(() =>{
