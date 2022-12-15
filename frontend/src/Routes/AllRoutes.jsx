@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import MensBeachWear from "../Components/MensBeach";
 import MensCoatsPage from "../Components/MensCoat";
 import WomenCoatsPage from "../Components/WomenCoats";
 import WomensJackets from "../Components/WomenJackets";
@@ -26,6 +27,7 @@ export default function AllRoutes ( ) {
             <Route path="/women/jeans" element={<WomensJeansPage/>}/>
             <Route path="/men/all-clothing" element={<MensPage/>}/>
             <Route path="/men/coats" element={<MensCoatsPage/>}/>
+            <Route path="/men/beach-wear" element={<MensBeachWear/>}/>
         </Routes>
         </> 
     )

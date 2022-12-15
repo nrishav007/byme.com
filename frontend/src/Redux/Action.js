@@ -295,3 +295,25 @@ export const GetMensCoatslFailure = ( ) =>{
         type : types.GET_MENS_COATS_FAILURE
     }
 };
+
+
+
+//MensBeach
+export const GetMensBeachRequest = ( ) =>{
+    return {
+        type : types.GET_MENS_BEACH_REQUEST
+    }
+};
+
+export const GetMensBeachSuccess = (payload) =>{
+    return {
+        type : types.GET_MENS_BEACH_SUCCESS,
+        payload,
+    }
+};
+
+export const GetMensBeachFailure = ( ) =>{
+    return {
+        type : types.GET_MENS_BEACH_FAILURE
+    }
+};
