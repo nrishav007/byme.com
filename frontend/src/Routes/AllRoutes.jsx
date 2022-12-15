@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import WomenCoatsPage from "../Components/WomenCoats";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
@@ -14,6 +15,7 @@ export default function AllRoutes ( ) {
             <Route path="/login" element={<Login/>}/>
             <Route path="/men" element={<MensPage/>}/>
             <Route path="/women/all-clothing" element={<WomensPage/>}/>
+            <Route path="/women/coats" element={<WomenCoatsPage/>}/>
             
         </Routes>
         </> 

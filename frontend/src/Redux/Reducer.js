@@ -7,6 +7,7 @@ const InitialData = {
     TrendingNow : [ ],
     HotNow : [ ],
     WomensAll : [ ],
+    WomensCoats : [ ],
     Mens : [ ],
     isLoading : false,
     isError : false
@@ -210,6 +211,42 @@ export default function Reducer (state=InitialData, action) {
                 isError : true
             }
         };
+
+
+
+        case types.GET_WOMENS_COATS_REQUEST : {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_COATS_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                WomensCoats : payload,
+                isError : false
+            }
+        }
+
+        case types.GET_WOMENS_COATS_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isError : true,
+                WomensCoats : [ ]
+            }
+        }
+
+
+
+
+
+
+
+
 
         case types.GET_MENS_DATA_REQUEST : {
             return {

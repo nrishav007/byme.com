@@ -20,11 +20,11 @@ export default function WomensPage ( ) {
         <Box height={'85px'}></Box>
         <Flex borderBottom='1px solid black' justifyContent='space-around' fontSize={{base : '10px', md: '15px', lg :'15px'}} padding={{base : '10px', md :'15px',lg :'10px'}} textAlign={{base :'center', md :'left'}}>
             <Link to='/women/all-clothing'><Text>All Clothing</Text></Link>
-            <Link to='/womens/coats'><Text>Coats</Text></Link>
-            <Link to='/womens/dresses'><Text>Swim Wear</Text></Link>
-            <Link to='/womens/hosiery'><Text>Hosiery</Text></Link>
-            <Link to='/womens/jackets'><Text>Jackets</Text></Link>
-            <Link to='/womens/jeans'><Text>Jeans</Text></Link>
+            <Link to='/women/coats'><Text>Coats</Text></Link>
+            <Link to='/women/dresses'><Text>Swim Wear</Text></Link>
+            <Link to='/women/hosiery'><Text>Hosiery</Text></Link>
+            <Link to='/women/jackets'><Text>Jackets</Text></Link>
+            <Link to='/women/jeans'><Text>Jeans</Text></Link>
         </Flex>
 
         <Box width={{base : "80%", md: '70%', lg : '60%'}} m='auto' mt={{base : '10px', md: '20px', lg: '30px'}}>

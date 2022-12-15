@@ -148,6 +148,27 @@ export const GetWomensALLDataFailure = ( ) =>{
 
 
 
+export const GetWomenCoatsRequest = ( ) =>{
+    return {
+        type : types.GET_WOMENS_COATS_REQUEST
+    }
+}
+
+export const GetWomenCoatsSuccess = (payload) =>{
+    return {
+        type : types.GET_WOMENS_COATS_SUCCESS,
+        payload
+    }
+}
+
+export const GetWomenCoatsFailure = ( ) =>{
+    return {
+        type : types.GET_WOMENS_COATS_FAILURE
+    }
+}
+
+
+
 export const GetMensDataRequest = ( ) =>{
     return {
         type : types.GET_MENS_DATA_REQUEST

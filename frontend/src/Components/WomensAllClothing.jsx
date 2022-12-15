@@ -1,17 +1,23 @@
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "../CustomComponents/Pagination";
 import ProductsListing from "../CustomComponents/ProductsListing";
+import ProgressLoader from "../CustomComponents/Progress";
 import { WomensAllClothingData } from "../Fetch/Fetch";
 import { GetWomensALLDataFailure, GetWomensALLDataRequest, GetWomensALLDataSuccess } from "../Redux/Action";
 
-export const getCurrentPage = (value) =>{
-    value = Number(value);
-    if(value === 'number' && value <=0) value = 1;
-    if(!value) value = 1;
+export const getCurrentPage = (value)=>{
+    value = Number(value)
+    if(value === 'number' && value <= 0) {
+        value = 1;
+    };
+    if(!value){
+        value = 1;
+    };
     return value;
-}
+};
 
 export default function WomensAllClothing ( ) {
     const Dispatch = useDispatch( );
@@ -47,7 +53,10 @@ export default function WomensAllClothing ( ) {
 
     return (
         <>
-        <ProductsListing data={WomensAll}/>
+        <Box mt='20px'>
+        <ProductsListing data={WomensAll} isLoading={isLoading} isError={isError}/>
+        </Box>
+        {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
         <Pagination current={page} onChange={(page) => setPage(page)} totalPage={totalPage} limit={18}/>
         </>
     )
