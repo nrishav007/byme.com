@@ -8,7 +8,7 @@ import { getCurrentPage } from "./WomensAllClothing"
 import Pagination from "../CustomComponents/Pagination"
 import ProgressLoader from "../CustomComponents/Progress"
 import Footer from "./Footer"
-import TopSection from "../CustomComponents/TopSection"
+import TopSection from "../CustomComponents/WomensTopSection"
 import { useSearchParams } from "react-router-dom"
 
 export default function WomenSwimWear ( ) {

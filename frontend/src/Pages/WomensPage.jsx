@@ -1,20 +1,10 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import {useSelector,useDispatch, shallowEqual} from "react-redux"
-import { Link } from "react-router-dom";
 import WomensAllClothing from "../Components/WomensAllClothing";
-import TopSection from "../CustomComponents/TopSection";
+import TopSection from "../CustomComponents/WomensTopSection";
 
 export default function WomensPage ( ) {
-    const {isLoading,isError,Womens} = useSelector((store) =>{
-        return {
-            isLoading : store.isLoading,
-            isError : store.isError,
-            Womens : store.Womens
-        }
-    }, shallowEqual);
     return (
         <>
         <TopSection/>

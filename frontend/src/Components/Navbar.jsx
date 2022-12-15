@@ -24,7 +24,7 @@ export default function Navbar( ) {
               <Flex as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }} gap='10px' w={{base : '', md : '90%', lg : '95%'}} justifyContent='space-around' alignItems='center' padding='10px'>
                
                <Flex width={{base : 0, md : "20%", lg :'10%'}} justifyContent='space-around' >
-               <Link to="/men"><Text _hover={{borderBottom : "1px solid black", fontWeight : "550"}}>MEN</Text></Link>
+               <Link to="/men/all-clothing"><Text _hover={{borderBottom : "1px solid black", fontWeight : "550"}}>MEN</Text></Link>
                <Link to="/women/all-clothing"><Text _hover={{borderBottom : "1px solid black", fontWeight : "550"}}>WOMEN</Text></Link>
                </Flex>
 
@@ -43,7 +43,7 @@ export default function Navbar( ) {
           {isOpen ? (
             <Box pb={4} display={{ md: 'none' }} >
               <Stack as={'nav'} spacing={4}>
-                  <Link to='/men'><Text>MEN</Text></Link>
+                  <Link to='/men/all-clothing'><Text>MEN</Text></Link>
                   <Link to='/women/all-clothing'><Text>WOMEN</Text></Link>
                   <Link to='/wishlist'><Text>WISHLIST</Text></Link>
                   <Link to='/sginup'><Text>SIGN UP</Text></Link>

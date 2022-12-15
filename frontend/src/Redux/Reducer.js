@@ -12,7 +12,7 @@ const InitialData = {
     WomensHosiery : [ ],
     WJackets : [ ],
     WomensJeans : [],
-    Mens : [ ],
+    MensAll : [ ],
     isLoading : false,
     isError : false
 }
@@ -372,7 +372,7 @@ export default function Reducer (state=InitialData, action) {
 
 
 //MensALL
-        case types.GET_MENS_DATA_REQUEST : {
+        case types.GET_MENS_ALL_REQUEST : {
             return {
                 ...state,
                 isLoading : true,
@@ -380,20 +380,20 @@ export default function Reducer (state=InitialData, action) {
             }
         }
 
-        case types.GET_MENS_DATA_SUCCESS : {
+        case types.GET_MENS_ALL_SUCCESS : {
             return {
                 ...state,
-                Mens : payload,
+                MensAll : payload,
                 isLoading : false,
                 isError : false
             }
         }
 
-        case types.GET_MENS_DATA_FAILURE : {
+        case types.GET_MENS_ALL_FAILURE : {
             return {
                 ...state,
                 isLoading : false,
-                Mens : [ ],
+                MensAll : [ ],
                 isError : true
             }
         }

@@ -255,22 +255,21 @@ export const GetWomenJeansFailure  = ( ) =>{
 
 
 //MensAll
-export const GetMensDataRequest = ( ) =>{
+export const GetMensAllRequest = ( ) =>{
     return {
-        type : types.GET_MENS_DATA_REQUEST
+        type : types.GET_MENS_ALL_REQUEST
     }
 };
 
-export const GetMensDataSuccess = (payload) =>{
+export const GetMensAllSuccess = (payload) =>{
     return {
-        type : types.GET_MENS_DATA_SUCCESS,
+        type : types.GET_MENS_ALL_SUCCESS,
         payload,
-
     }
 };
 
-export const GetMensDataFailure = ( ) =>{
+export const GetMensAllFailure = ( ) =>{
     return {
-        type : types.GET_MENS_DATA_FAILURE
+        type : types.GET_MENS_ALL_FAILURE
     }
 };

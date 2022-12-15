@@ -1,6 +1,5 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
-import { Link, useSearchParams } from "react-router-dom"
-import Navbar from "./Navbar"
+import { Box } from "@chakra-ui/react"
+import {useSearchParams } from "react-router-dom"
 import {useSelector,useDispatch} from "react-redux"
 import { WomensCoatsData } from "../Fetch/Fetch"
 import { GetWomenCoatsFailure, GetWomenCoatsRequest, GetWomenCoatsSuccess } from "../Redux/Action"
@@ -10,7 +9,7 @@ import { getCurrentPage } from "./WomensAllClothing"
 import Pagination from "../CustomComponents/Pagination"
 import ProgressLoader from "../CustomComponents/Progress"
 import Footer from "./Footer"
-import TopSection from "../CustomComponents/TopSection"
+import TopSection from "../CustomComponents/WomensTopSection"
 export default function WomenCoatsPage ( ) {
     const {isLoading,isError,WomensCoats} = useSelector((x)=>{
         return{

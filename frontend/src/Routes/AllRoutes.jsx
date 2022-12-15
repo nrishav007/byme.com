@@ -17,13 +17,13 @@ export default function AllRoutes ( ) {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/men" element={<MensPage/>}/>
             <Route path="/women/all-clothing" element={<WomensPage/>}/>
             <Route path="/women/coats" element={<WomenCoatsPage/>}/>
             <Route path="/women/beach-wear" element={<WomenSwimWear/>}/>
             <Route path="/women/hosiery" element={<WomenHosiery/>}/>
             <Route path="/women/jackets" element={<WomensJackets/>}/>
             <Route path="/women/jeans" element={<WomensJeansPage/>}/>
+            <Route path="/men/all-clothing" element={<MensPage/>}/>
         </Routes>
         </> 
     )
