@@ -28,8 +28,6 @@ export default function HomeMainBodyComponent1 ( ) {
     }, [ ])
     return (
         <>
-        <Text align='center'>{isLoading && <Spinner size='lg' thickness="4px"/>}</Text>
-        <Text align='center'>{isError && 'Ooops!! Something Went Wrong'}</Text>
          <CarouselComponent data={HomeMainBody1} itemsBase={2} itemsMd={3} itemsLg={4}/>
         </>
     )

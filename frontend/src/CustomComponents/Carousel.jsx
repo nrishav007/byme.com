@@ -45,7 +45,7 @@ export default function CarouselComponent ({data,itemsBase,itemsMd,itemsLg}) {
                 {data.length > 0 && data.map((elem)=>{
                     return <Box key={elem.images} w={{base : '95%'}} m='auto'>
                         <Text>{elem.text}</Text>
-                        <Image src={elem.images} m='auto' draggable="false"/>
+                        <Image src={elem.images} m='auto' draggable="false" width={{base :'190px', md: '220px', lg :'350px'}} height={{base :'180px', md :'210px', lg:'300px'}}/>
                     </Box>
                 })}
             </Carousel>

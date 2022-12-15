@@ -17,7 +17,7 @@ export const BreakOutBrandsData = ( ) =>{
 }
 
 export const TrendingNowData = ( ) =>{
-    return axios.get(`https://grumpy-lion-waistcoat.cyclic.app/api/home/7`)
+    return axios.get(`https://grumpy-lion-waistcoat.cyclic.app/api/home/5`)
 }
 
 export const HotRightNowData = ( ) =>{
