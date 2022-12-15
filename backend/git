@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Enter your commit"
+echo ""
+read name
+git add .
+git commit -m "$name"
+git push
