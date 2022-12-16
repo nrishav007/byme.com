@@ -34,9 +34,9 @@ import { useEffect, useRef, useState } from "react";
         <>
             <Container className="slideshow" maxW={{base : `${cwidthBase}`, md : `${cwidthMd}`, lg : `${cwidthLg}`}}>
             <div className="slideshowSlider"  style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} >
-                {data.map((backgroundColor, index) => (
-                <Box className="slide" key={backgroundColor.id}>
-                   <Image shadow='lg' m='auto' src={backgroundColor.img} w={{base : `${ImageWBase}`, md :`${ImageWMd}`, lg : `${ImageWLg}`}}/>
+                {data.map((elem, index) => (
+                <Box className="slide" key={elem.id}>
+                   <Image shadow='lg' m='auto' src={elem.images} w={{base : `${ImageWBase}`, md :`${ImageWMd}`, lg : `${ImageWLg}`}}/>
                 </Box>
                 ))}
             </div>
