@@ -8,11 +8,16 @@ const jwt=require("jsonwebtoken");
 const API = require("./Routes/api.route");
 const UserModel = require("./Models/User.model");
 const port=process.env.PORT || 3400;
+const cors=require("cors");
+const user = require("./Routes/User.route");
+const product = require("./Routes/Product.route");
 app.use(express.json());
-
-app.use("/api",API)
-
-
+app.use(cors({
+  origin:"*"
+}));
+app.use("/api",API);
+app.use("/user",user);
+app.use("/product",product);
 app.post("/signup", async (req, res) => {
     try {
       let data = await UserModel.find({ email: req.body.email });
