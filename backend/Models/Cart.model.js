@@ -5,6 +5,7 @@ const CartSchema=mongoose.Schema({
     description:String,
     price:String,
     category:String,
+    type:String,
     userID:String
 });
 const CartModel=mongoose.model("Bymecart",CartSchema);

@@ -18,7 +18,6 @@ const InitialData = {
     MensSweaters : [ ],
     MensJackets : [ ],
     MensJeans : [ ],
-    SinglePage : { },
     isLoading : false,
     isError : false
 }
@@ -546,8 +545,8 @@ export default function Reducer (state=InitialData, action) {
                 MensJeans : [ ],
                 isError : true
             }
-        }
-        
+        };
+
         default :
         return state
     }
