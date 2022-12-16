@@ -13,7 +13,7 @@ export default function Navbar( ) {
     const {user} = useContext(AuthContext);
     return (
       <>
-        <Box px={4}  className='ChackraNavBar' shadow='lg' borderBottom={{base : '0px', md :'1px solid black'}} padding='10px'>
+        <Box px={4} mb={20} className='ChackraNavBar' shadow='lg' borderBottom={{base : '0px', md :'1px solid black'}} padding='10px'>
           <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
             <IconButton color='black' size='md' bg='white' icon={isOpen ? <CloseIcon /> : <HamburgerIcon fontSize='30px'/>} aria-label='Open Menu' display={{ md: 'none' }} onClick={isOpen ? onClose : onOpen}/>
               

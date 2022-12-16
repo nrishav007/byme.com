@@ -126,3 +126,9 @@ export const MensJeansData = (page=1,setTotalPage) =>{
         return res
     })
 }
+
+
+export const getsinglepage = (id) =>{
+     return axios.get(`https://coral-perch-cuff.cyclic.app/product/single/${id}`)
+
+}
