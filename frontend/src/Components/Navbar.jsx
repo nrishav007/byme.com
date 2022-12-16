@@ -1,16 +1,30 @@
-import {Box,Flex,IconButton,useDisclosure,Stack,Text,Image,Input, Tooltip} from '@chakra-ui/react';
-import {Link} from "react-router-dom"
+import {Box,Flex,IconButton,useDisclosure,Stack,Text,Image,Input, Tooltip, Button} from '@chakra-ui/react';
+import {Link, Navigate} from "react-router-dom"
 import { HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 import {BsSearch} from "react-icons/bs"
 import { useContext } from 'react';
 import { AuthContext } from '../context/AppContext';
 import {FaUserCircle} from "react-icons/fa"
-import {BiLogIn} from "react-icons/bi"
+import {BiLogIn,BiLogOut} from "react-icons/bi"
 import {AiOutlineHeart} from "react-icons/ai"
 
 export default function Navbar( ) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const {user} = useContext(AuthContext);
+    const {user,logOut} = useContext(AuthContext);
+
+    const handleLogOut = ( ) =>{
+      logOut( )
+    }
+
+    const handleCheck = ( ) =>{
+      if(user.displayName === undefined) 
+      {
+        <Navigate to='/login'/>
+      }
+      else{
+        handleLogOut( );
+      }
+    }
     return (
       <>
         <Box px={4} mb={20} className='ChackraNavBar' shadow='lg' borderBottom={{base : '0px', md :'1px solid black'}} padding='10px'>
@@ -33,10 +47,12 @@ export default function Navbar( ) {
                 <Input borderRadius='0px' border='0px' placeholder='SEARCH' variant="unstyled" padding='5px'/>
                </Flex>
 
+               {/* <Button onClick={handleLogOut}>LOG OUT</Button> */}
+
                <Flex width={{base : "", md  : '20%', lg :'10%'}} justifyContent='space-around' fontSize='25px'>
-               <Tooltip bg='#CBD5E0' color='black' label='Sing Up'><Link to="/signup"><Text><BiLogIn/></Text></Link></Tooltip>
+               <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ? 'Sign Up' : 'Log Out'}><Link to={user?.displayName === undefined ? '/login' : '/'} ><Text onClick={handleCheck}>{user?.displayName === undefined ? <BiLogIn/> : <BiLogOut/>}</Text></Link></Tooltip>
                <Tooltip bg='#CBD5E0' color='black' label='Wishlist'><Link to="/wishlist"><Text><AiOutlineHeart/></Text></Link></Tooltip>
-              <Tooltip bg='#CBD5E0' color='black' label={user.displayName ? user.displayName : 'Profile'}><Link to={user.displayName ? '/' : '/login'}><Text><FaUserCircle/></Text></Link></Tooltip>
+              <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ?  'Profile' :  user.displayName}><Link><Text><FaUserCircle/></Text></Link></Tooltip>
               </Flex>
               </Flex>
           </Flex> 
