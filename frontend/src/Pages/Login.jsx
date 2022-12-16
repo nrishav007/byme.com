@@ -44,9 +44,13 @@ import axios from "axios";
        await  axios.post("https://coral-perch-cuff.cyclic.app/login", payload).then((res)=>{
         const user=(res)
         toast({
+          position : 'top',
+          colorScheme : 'green', 
+          status : "success",
           title:res.data.msg
         })
         if(res.data.token){
+          localStorage.setItem("logintoken",res.data.token)
           navigate("/")
         }
         else{
@@ -54,8 +58,6 @@ import axios from "axios";
         }
         console.log(user)
         setLoading(false)
-        
-        localStorage.setItem("logintoken",res.data.token)
       })
     };
     const handleGoogleLogin = async (e) => {
@@ -84,7 +86,10 @@ import axios from "axios";
       console.log("byme",user.email, user.displayName)
     }
      toast({
-      title:"Login sucessfully "
+        position : 'top',
+        colorScheme : 'green', 
+        status : "success",
+        title:"Login sucessfully "
     })
         navigate("/");
       } catch (error) {
@@ -99,6 +104,9 @@ import axios from "axios";
        const fbuser= await facebookSignIn();
        console.log(fbuser);
        toast({
+        position : 'top',
+        colorScheme : 'green', 
+        status : "success",
         title:"Login sucessfully "
       })
         navigate("/");

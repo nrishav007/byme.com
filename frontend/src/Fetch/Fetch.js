@@ -128,7 +128,11 @@ export const MensJeansData = (page=1,setTotalPage) =>{
 }
 
 export const AddToWishListData = (payload) =>{
-    return axios.post(`https://coral-perch-cuff.cyclic.app/wish/create`, payload)
+    return axios.post(`https://coral-perch-cuff.cyclic.app/wish/create`, payload,{
+        headers : {
+            "Authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
 }
 
 export const GetWishListData = ( ) =>{

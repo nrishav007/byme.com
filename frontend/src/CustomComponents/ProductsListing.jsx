@@ -19,8 +19,6 @@ export default function ProductsListing ({data,isLoading,isError}) {
         })
         .catch((err)=> console.log(err))
     }
-
-   
     return (
         <>
         {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
@@ -29,7 +27,7 @@ export default function ProductsListing ({data,isLoading,isError}) {
             {data.length > 0 && data.map((elem)=>{
                 return <Box  padding='10px' lineHeight={{base : '30px'}} key={elem._id}>
                     <Text onClick={( )=>handleAddToWish(elem.image,elem.title,elem.price,elem.category,elem.description,elem.type)}><AiOutlineHeart/></Text>
-                    <Link to={`/product/${elem._id}`}><Image src={elem.image} width={{base :'130px', md: '150px'}} m='auto' onClick={( ) => handleAddToSinglePage(elem)}/></Link>
+                    <Link to={`/product/${elem._id}`}><Image src={elem.image} width={{base :'130px', md: '150px'}} m='auto'/></Link>
                     <Text fontSize={{base : '14px', md: '15px'}} fontWeight='550' align='center'>Title : {elem.title}</Text>
                     <Text fontSize={{base : '14px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
                 </Box>
