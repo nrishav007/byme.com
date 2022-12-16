@@ -11,14 +11,17 @@ import {
     Alert,
     AlertIcon,
     Heading,
+    useToast
   } from "@chakra-ui/react";
-  import React, { useState,useContext } from "react";
+  import React, { useState,useContext} from "react";
   
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
   import { BsApple } from "react-icons/bs";
   import { AuthContext } from "../context/AppContext";
   import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
   
   export default function Login() {
@@ -28,28 +31,56 @@ import {
     const { googleSignIn, facebookSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const toast =useToast()
     
-  
-    const handleSubmit = async (e) => {
+    const handleSubmit =async (e) => {
       e.preventDefault();
-      console.log(email,password)
+      setError("")
+      setLoading(true);
+      const payload={
+        email,
+        password
+      }
+       await  axios.post("https://coral-perch-cuff.cyclic.app/login", payload).then((res)=>{
+        const user=(res)
+        toast({
+          title:res.data.msg
+        })
+        if(res.data.token){
+          navigate("/")
+        }
+        else{
+         navigate("/login")
+        }
+        console.log(user)
+        setLoading(false)
+        
+        localStorage.setItem("logintoken",res.data.token)
+      })
     };
     const handleGoogleLogin = async (e) => {
       e.preventDefault();
       try {
      const user= await googleSignIn();
      console.log(user);
+     toast({
+      title:"Login sucessfully "
+    })
         navigate("/");
       } catch (error) {
         console.log(error.message);
       }
     };
   
+    
     const handleFBlogin = async (e) => {
       e.preventDefault();
       try {
        const fbuser= await facebookSignIn();
        console.log(fbuser);
+       toast({
+        title:"Login sucessfully "
+      })
         navigate("/");
       } catch (error) {
         console.log(error.message);
@@ -77,7 +108,7 @@ import {
           h={"100vh"}
           w={["96%", "65%", "45%"]}
         >
-          <Box bg="white" w={400} p={39} rounded="md" textAlign={"center"}>
+          <Box  bg="white"  w={400} p={39} rounded="md" textAlign={"center"}>
             <Heading variant={"solid"}>LOG IN</Heading>
             <br />
             <Box></Box>
@@ -126,7 +157,7 @@ import {
                   Remember me?
                 </Checkbox>
   
-                <Button
+                <Button 
                   type="submit"
                   bg="black"
                   color="white"
@@ -155,16 +186,11 @@ import {
                         <BsFacebook />
                       </Button>
                     </Box>
-                    <Box>
-                      <Button variant="outline" colorScheme={"#50b6ff"}>
-                        <BsApple />
-                      </Button>
-                    </Box>
                   </Flex>
                   <br />
                   <Text>
                     New to BYME.COM?{" "}
-                    <Link color="teal.500" to="/signup">
+                    <Link color="blue" to="/signup">
                       Create an account
                     </Link>
                   </Text>

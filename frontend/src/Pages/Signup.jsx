@@ -9,11 +9,12 @@ import {
     VStack,
     Text,
     Alert,
+    useToast
   } from "@chakra-ui/react";
   import {  useContext, useState } from "react";
   
   import { Link,useNavigate } from "react-router-dom";
-  
+  import axios from "axios";
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
   // import { BsApple } from "react-icons/bs";
@@ -22,7 +23,7 @@ import { AuthContext } from "../context/AppContext";
   
   export default function Signup() {
     
-    const [username, setUsername] = useState("");
+    const [name, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { googleSignIn, facebookSignIn } = useContext(AuthContext);
@@ -43,14 +44,41 @@ import { AuthContext } from "../context/AppContext";
     //     alert("Please enter a strong password");
     //   }
     // };
-  
+    const toast =useToast()
     const handleSubmit = (e) => {
+      e.preventDefault();
+      const payload={
+        name,
+        email,
+        password
+        
+      }
+      
+      // console.log(payload);
+      axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
+        console.log(res.data);
+        toast({
+          title:res.data.msg
+        })
+        if(res.status===200){
+          navigateUser("/")
+        }
+        else{
+          toast({
+            title:"Please Signup with correct credentials"
+          })
+        }
+        
+      })
       // alert("SIGN UP SUCCESSFULL");
     };
     const handlegoogleSignUp = async (e) => {
       e.preventDefault();
       try {
         await googleSignIn();
+        toast({
+          title:"Sign Up Successfully"
+        })
         navigateUser("/");
       } catch (err) {
         Alert(err.message);
@@ -66,11 +94,11 @@ import { AuthContext } from "../context/AppContext";
   
     return (
       <Box
-        bgColor="#FBFAF9"
-        bgPos="center"
-        bgRepeat="no-repeat"
-        bgSize="100%"
-        Size="100%"
+      bgImage="url(https://i.ibb.co/k0JL8gg/vecteezy-clothing-store-customers-are-choosing-clothes-and-a-staff-is-4145772.jpg)"
+      bgPos="center"
+      bgRepeat="no-repeat"
+      bgSize="100%"
+      Size="100%"
       >
         <Box
           align="center"
@@ -79,13 +107,13 @@ import { AuthContext } from "../context/AppContext";
           fontSize="36px"
           fontWeight="700"
           fontStyle="normal"
-          h={50}
+          h={20}
           display="block"
         >
           <img
             style={{ height: "95px" }}
             src="https://user-images.githubusercontent.com/103938174/207255846-af9cb166-99dd-415a-9ef1-7e8dbabebaf8.png"
-            alt=""
+            alt="bymeicon"
           />
         </Box>
         <br />
@@ -113,29 +141,24 @@ import { AuthContext } from "../context/AppContext";
                 </Button>
                 <Box>
                 </Box>
-                {/* <Button variant="outline" colorScheme={"#50b6ff"}>
-                  <BsApple />
-                </Button> */}
-                {/* <Box>
-                </Box> */}
               </Flex>
               <br />
               <Text variant={"ghost"}>Or</Text>
             </Box>
   
-            <form>
+            <form onSubmit={handleSubmit}>
               <VStack spacing={4} align="flex-start">
                 <FormControl>
-                  <FormLabel htmlFor="username" variant={"smooth"}>
+                  <FormLabel htmlFor="name" variant={"smooth"}>
                     Username
                   </FormLabel>
                   <Input
                     isInvalid
                     errorBorderColor="black"
-                    id="username"
-                    name="username"
-                    type="username"
-                    placeholder="Enter a username"
+                    id="name"
+                    name="name"
+                    type="name"
+                    placeholder="Enter a name"
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </FormControl>
@@ -167,7 +190,7 @@ import { AuthContext } from "../context/AppContext";
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </FormControl>
-                <Button bg="black" color="white" width="full">
+                <Button type="submit" bg="black" color="white" width="full">
                   CREATE ACCOUNT
                 </Button>
                 <Box alignSelf="center">

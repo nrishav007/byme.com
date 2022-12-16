@@ -11,6 +11,7 @@ import {
 import { auth } from "../Pages/firebase_config";
 import { useEffect } from "react";
 
+
 export const AuthContext = React.createContext();
 
 export default function AuthContextProvider({ children }) {
@@ -42,7 +43,7 @@ export default function AuthContextProvider({ children }) {
       unsubscribe();
     };
   }, []);
-  console.log(user)
+  console.log("user",user)
 
   return (
     <AuthContext.Provider
