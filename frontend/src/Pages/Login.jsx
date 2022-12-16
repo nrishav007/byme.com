@@ -17,10 +17,10 @@ import {
   
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
-  import { BsApple } from "react-icons/bs";
   import { AuthContext } from "../context/AppContext";
   import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Components/Footer";
 
 
   
@@ -228,6 +228,7 @@ import axios from "axios";
             </form>
           </Box>
         </Flex>
+        <Footer/>
       </Box>
     );
   }
