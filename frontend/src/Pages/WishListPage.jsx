@@ -1,30 +1,38 @@
-import { Box, Button, Image, SimpleGrid, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Image, SimpleGrid, Text, useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Navbar from "../Components/Navbar";
-import {AiFillDelete} from "react-icons/ai"
 import { DeleteWishList, GetWishListData } from "../Fetch/Fetch";
 import ProgressLoader from "../CustomComponents/Progress";
+import {useDispatch,useSelector} from "react-redux"
+import { GetWishListFailure, GetWishListRequest, GetWishListSuccess } from "../Redux/Action";
 
 export default function WishlistPage ( ) {
-    const [wish,SetWish] = useState([ ]);
-    const [isLoading,setloading] = useState(false)
+    const Dispatch = useDispatch( );
+    const {isLoading,isError,WishList} = useSelector((store) =>{
+        return{
+            isLoading : store.isLoading,
+            isError : store.isError,
+            WishList : store.WishList
+        }
+    });
+    const Toast = useToast( );
+    let count = WishList.length;
 
     const handleWislist = ( ) =>{
-        setloading(true)
+        Dispatch(GetWishListRequest( ));
         GetWishListData( ).then((res)=>{
-            SetWish(res.data)
-            setloading(false)
+            Dispatch(GetWishListSuccess(res.data))
         })
+        .catch((err)=> Dispatch(GetWishListFailure(err)))
     };
+    
 
     const handleDelete = (id)=>{
         return DeleteWishList(id).then((res)=>{
-            SetWish(res.data)
+            Toast({position : "top", title : `${res.data.msg}`, status : "success", duration : 3000});   
         })
         .catch((err)=>console.log(err))
     }
-
 
     const DeleteFromWish = (id) =>{
         handleDelete(id).then(( )=> handleWislist( ))
@@ -33,19 +41,23 @@ export default function WishlistPage ( ) {
     useEffect(( ) =>{
         handleWislist( )
     },[ ])
+
+   
     
     return (
         <>
         <Navbar/>
         <Box height={'90px'}></Box>
         {isLoading && <ProgressLoader size='sm' colorScheme='black'/>}
+        <Text align='center' fontSize='18px'>{WishList.length === 0 ? 'WishList Is Empty' : `All Product's ${count}`}</Text>
         <SimpleGrid columns={[2,2,3,6]}  width={{base : '95%'}} m='auto' rowGap={{base : '20px', lg: '50px'}} columnGap={{base :'20px', lg : '30px'}}>
-            {wish.length > 0 && wish.map((elem)=>{
+            {WishList.length > 0 && WishList.map((elem)=>{
                 return <Box  padding='10px' lineHeight={{base : '30px'}} key={elem._id}>
                     <Image src={elem.image} width={{base :'130px', md: '150px'}} m='auto'/>
-                    <Text fontSize={{base : '14px', md: '15px'}} fontWeight='550' align='center'>Title : {elem.title}</Text>
-                    <Text fontSize={{base : '14px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
-                    <Text onClick={( )=> DeleteFromWish(elem._id)} align='center' cursor='pointer'>Remove</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Title : {elem.title}</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px'>Add To Cart</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} onClick={( )=> DeleteFromWish(elem._id)} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px'>Remove</Text>
                 </Box>
             })}
         </SimpleGrid>
