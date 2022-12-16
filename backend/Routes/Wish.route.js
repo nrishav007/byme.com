@@ -33,4 +33,4 @@ wish.get("/", async (req, res) => {
       }
     });
     
-module.exports=user;
+module.exports=wish;
