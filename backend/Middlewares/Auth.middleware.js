@@ -1,20 +1,24 @@
-const jwt = require("jsonwebtoken");
-const env = require("dotenv");
-env.config();
-const auth=(req,res,next)=>{
-    const token=req.headers?.authorization?.split(" ")[1];
-    if(token!=undefined){
-        jwt.verify(token, process.env.SECRET_KEY,(err, decoded)=> {
-            if(err){
-                res.status(404).send({msg:"Validation failed"})
-            }
-            req.body.userID=decoded.userID;
-            console.log(req.body);
-            next()
-          });   
+const JWT = require("jsonwebtoken");
+require("dotenv").config( );
+const auth = (req,res,next) =>{
+    const token = req.headers?.authorization?.split(" ")[1];
+    if(token){
+        console.log(token)
+        const decoded = JWT.verify(token,process.env.SEC_KEY);
+        console.log("d",decoded)
+        if(decoded){
+            const userID = decoded.userID;
+            req.body.userID = userID;
+            next();
+        }
+        else{
+            res.status(400).send({"message" : "User Not Found, Try Logging In"})
+        }
     }
     else{
-        res.status(404).send({msg:"Validation failed"})
+        res.status(400).send({"message" : "User Not Found, Try Logging In"})
     }
 }
-module.exports=auth;
+module.exports = {
+    auth
+}

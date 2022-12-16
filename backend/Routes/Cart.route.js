@@ -22,7 +22,7 @@ cart.get("/", async (req, res) => {
     }
   });
   
-  cart.delete("/:userID", async (req, res) => {
+  cart.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
         await CartModel.findByIdAndDelete(userID);
