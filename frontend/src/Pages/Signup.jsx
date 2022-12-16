@@ -61,7 +61,7 @@ import { AuthContext } from "../context/AppContext";
           title:res.data.msg
         })
         if(res.status===200){
-          navigateUser("/")
+          navigateUser("/login")
         }
         else{
           toast({
