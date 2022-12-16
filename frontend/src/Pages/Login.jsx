@@ -63,6 +63,26 @@ import axios from "axios";
       try {
      const user= await googleSignIn();
      console.log(user);
+     if(user.email!==undefined){
+      const payload={
+        name:user.displayName,
+        email:user.email,
+        password:`${user.displayName.split(" ")[0]}@byme`
+      }
+      axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
+        console.log(res.data)
+          if(res.status===200){
+           const  login_payload={
+            email:user.email,
+        password:`${user.displayName.split(" ")[0]}@byme`
+           }
+            axios.post("https://coral-perch-cuff.cyclic.app/login",login_payload).then((res)=>{
+              console.log(res)
+            })
+          }
+        })
+      console.log("byme",user.email, user.displayName)
+    }
      toast({
       title:"Login sucessfully "
     })
@@ -72,7 +92,7 @@ import axios from "axios";
       }
     };
   
-    
+
     const handleFBlogin = async (e) => {
       e.preventDefault();
       try {
