@@ -15,6 +15,7 @@ import MensPage from "../Pages/MensPage";
 import Signup from "../Pages/Signup";
 import WishlistPage from "../Pages/WishListPage";
 import WomensPage from "../Pages/WomensPage";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 
 export default function AllRoutes ( ) {
     return (
@@ -23,7 +24,7 @@ export default function AllRoutes ( ) {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/women/all-clothing" element={<WomensPage/>}/>
+            <Route path="/women/all-clothing" element={<PrivateRoute><WomensPage/></PrivateRoute>}/>
             <Route path="/women/coats" element={<WomenCoatsPage/>}/>
             <Route path="/women/beach-wear" element={<WomenSwimWear/>}/>
             <Route path="/women/hosiery" element={<WomenHosiery/>}/>
