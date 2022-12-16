@@ -18,6 +18,7 @@ const InitialData = {
     MensSweaters : [ ],
     MensJackets : [ ],
     MensJeans : [ ],
+    SinglePage : { },
     isLoading : false,
     isError : false
 }
