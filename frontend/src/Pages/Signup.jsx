@@ -8,7 +8,6 @@ import {
     Input,
     VStack,
     Text,
-    Alert,
     useToast
   } from "@chakra-ui/react";
   import {  useContext, useState } from "react";
@@ -17,9 +16,7 @@ import {
   import axios from "axios";
   import { FcGoogle } from "react-icons/fc";
   import { BsFacebook } from "react-icons/bs";
-  // import { BsApple } from "react-icons/bs";
-// import { auth } from "./firebase_config";
-import { AuthContext } from "../context/AppContext";
+  import { AuthContext } from "../context/AppContext";
   
   export default function Signup() {
     
@@ -28,22 +25,7 @@ import { AuthContext } from "../context/AppContext";
     const [password, setPassword] = useState("");
     const { googleSignIn, facebookSignIn } = useContext(AuthContext);
     const navigateUser=useNavigate()
-  
-    // const signup = async () => {
-    //   try {
-    //     const user = await createUserWithEmailAndPassword(auth, email, password);
-    //     console.log(user);
-    //     console.log(user.email);
-    //     console.log(username);
-    //     navigateUser("/login");
-    //     alert("Welcome ");
-    //   } catch (err) {
-    //     alert(err.message);
-    //   }
-    //   if (password.length <= 5) {
-    //     alert("Please enter a strong password");
-    //   }
-    // };
+
     const toast =useToast()
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -54,7 +36,7 @@ import { AuthContext } from "../context/AppContext";
         
       }
       
-      // console.log(payload);
+     
       axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
         console.log(res.data);
         toast({
@@ -75,13 +57,37 @@ import { AuthContext } from "../context/AppContext";
     const handlegoogleSignUp = async (e) => {
       e.preventDefault();
       try {
-        await googleSignIn();
-        toast({
-          title:"Sign Up Successfully"
+     const user= await googleSignIn();
+     console.log(user);
+     if(user.email!==undefined){
+      const payload={
+        name:user.displayName,
+        email:user.email,
+        password:`${user.displayName.split(" ")[0]}@byme`
+      }
+      axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
+        console.log(res.data)
+          if(res.status===200){
+           const  login_payload={
+            email:user.email,
+        password:`${user.displayName.split(" ")[0]}@byme`
+           }
+            axios.post("https://coral-perch-cuff.cyclic.app/login",login_payload).then((res)=>{
+              console.log(res)
+            })
+          }
         })
-        navigateUser("/");
-      } catch (err) {
-        Alert(err.message);
+      console.log("byme",user.email, user.displayName)
+    }
+     toast({
+        position : 'top',
+        colorScheme : 'green', 
+        status : "success",
+        title:"Login sucessfully "
+    })
+        navigateUser("/login");
+      } catch (error) {
+        console.log(error.message);
       }
     };
     const handleFacebookSignUp = async (e) => {

@@ -1,7 +1,5 @@
 import { Box, Image, SimpleGrid, Text, useToast} from "@chakra-ui/react";
 import ProgressLoader from "./Progress";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import { AddToWishListData } from "../Fetch/Fetch";
 
 export default function ProductsListing ({data,isLoading,isError}) {
@@ -18,11 +16,11 @@ export default function ProductsListing ({data,isLoading,isError}) {
             type
         }
         return AddToWishListData(payload).then((res)=>{
-            console.log(res.data.msg)
             Toast({position : "top", title : `${res.data.msg}`, status : res.data.msg === 'Product already in wishlist' ? 'error' : 'success',duration : 3000})
         })
         .catch((err)=> console.log(err))
     }
+
     return (
         <>
         {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}

@@ -127,6 +127,11 @@ export const MensJeansData = (page=1,setTotalPage) =>{
     })
 }
 
+
+export const getsinglepage = (id) =>{
+     return axios.get(`https://coral-perch-cuff.cyclic.app/product/single/${id}`)
+
+}
 export const AddToWishListData = (payload) =>{
     return axios.post(`https://coral-perch-cuff.cyclic.app/wish/create`, payload,{
         headers : {

@@ -1,8 +1,16 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
 import "./Deatil.css"
-
+// import SoldIcon from "."
 import Bread from './Bread';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { GetMensAllFailure, GetMensAllRequest, GetMensAllSuccess } from '../../Redux/Action';
+import { useDispatch } from 'react-redux';
+import { MensAllData } from '../../Fetch/Fetch';
+import Navbar from '../../Components/Navbar';
+import { Link } from 'react-router-dom';
+import { getsinglepage } from './../../Fetch/Fetch';
 
 const product = {
     
@@ -18,41 +26,31 @@ const product = {
       price: 529,
       strikePrice: 1390,
       rating: 4,
-      images:[
+      size:"M, S, L, X, XL, XXL",
+      infos: [
         {
-          src: "https://i.ibb.co/n10gPsZ/71f-Dx-CFXJXL-SX569-SX-UX-SY-UY.jpg",
+        title:"ProductDetail",
+        content:"Decorated with an all-over floral motif, this black short-sleeved Saint Laurent shirt is Italian-crafted and features a structured, yet fluid silhouette. 100% viscose.",
         },
         {
-          src:"https://i.ibb.co/6BBvXfc/61-Gf-D31-Ro8-L-SX569-SX-UX-SY-UY.jpg",
+          title:  "All Shipping ", 
+          content: "Free Shiping with Mythresa Valid jan 2023", 
         },
         {
-          src: "https://i.ibb.co/DCgJQTK/81uf-VXh9x-TL-SX569-SX-UX-SY-UY.jpg",
-        }
-         ,
-         {
-          src: 
-          "https://i.ibb.co/5163SrQ/71-F-FZ939i-L-SX569-SX-UX-SY-UY.jpg",
-         },
-         {
-          src: "https://i.ibb.co/HgRWfj7/714-QSOg-O7-ZL-SX569-SX-UX-SY-UY.jpg",
-         },
-         {
-          src: "https://i.ibb.co/sFmzN2j/61-CF-f-F-1q-L-SX569-SX-UX-SY-UY.jpg",
-         }
-         ,{
-          src: "https://i.ibb.co/2c6v0bz/71p-NSl-Ga-Og-L-SX569-SX-UX-SY-UY.jpg",
-         },
-         {
-          src: "https://i.ibb.co/YtvKTJD/71q-RUolt9-ML-SY741-SX-UX-SY-UY.jpg",
-         },
-         {
-          src:"https://i.ibb.co/9rrcMsk/71-J4-QFJYd-L-SX569-SX-UX-SY-UY.jpg",
-         },
-         {
-          src:"https://i.ibb.co/QFT52k3/71zm-Gl-IGv-EL-SX569-SX-UX-SY-UY.jpg",
-         }
+          title: "Size & Fit Issues", 
+          content: "True to size Without pleats in the back Straight fit  Lightweight material Falls to the hip The model in the picture is 185cm-6'1 and wearing a size EU 39" 
+        },
+      {
+        title:"Style Details",
+        content: "Decorated with an all-over floral motif, this black short-sleeved Saint Laurent shirt is Italian-crafted and features a structured, yet fluid silhouette.", 
+          
+      } ,
+    ] ,
+
+
+      images: "https://i.ibb.co/n10gPsZ/71f-Dx-CFXJXL-SX569-SX-UX-SY-UY.jpg",
+        
       
-      ]
   }
 
 
@@ -61,9 +59,28 @@ const Details = () => {
   const [width ,setwidth] = useState(0)
   const [start ,setStart] = useState(0)
   const [change ,setChange] = useState(9)
-
-
+  const [data, setData] = useState([])
+  const params = useParams()
+ const Dispatch = useDispatch()
+  const [ infotitle , setinfotitle] = useState(product.infos[0].title)
   const slideRef = useRef()
+ 
+  // console.log(params.id, 'id')
+    const getData = () =>{
+       getsinglepage(params.id).then((res)=>{
+         console.log(res.data,'from api')
+         setData(res.data)
+       })
+       .catch((err)=>{
+        console.log(err)
+       })
+    }
+ console.log(data)
+
+   useEffect(()=>{
+     getData()
+   },[params.id])
+  // console.log(data,'from state')
 
    useEffect(()=>{
      if(!slideRef.current) return;
@@ -71,7 +88,7 @@ const Details = () => {
      const childrenElementCount = slideRef.current.childElementCount;
      const width = scrollWidth/childrenElementCount
      setwidth(width)
-
+      // console.log({scrollWidth,childrenElementCount,width}) 
    },[])
 
    useEffect(() =>{
@@ -88,7 +105,6 @@ const Details = () => {
     setslideindex(prev=>prev+n)
     slideshow(slideindex+n);
   }
-
 
   function slideshow(n){
        if(n>product.images.length){
@@ -116,92 +132,98 @@ const Details = () => {
       slideRef.current.scrollLeft-=width
      }
    }
-
-
+   
+  
 
   return (
      <React.Fragment>
-  
-     <section className='product-details'>
-       <div className='product-page-img'>
-          {
-            
-            product.images.map((image,index)=>(
-               <div key={index} className="myslides"
-               style={{display:(index+1)===slideindex ? "block":"none"}}
-               >
-                <div className='numbertext'>
-                      {index+1} /{product.images.length}
-                      <img src={image.src} alt="" />
-                </div>
-              </div>  
-          ))
-             
-          }
+       <Navbar/>
 
-          <a href='#' className='prev' onClick={()=>plusSlides(-1)}>&#10094;</a>
-          <a href='#' className='next' onClick={()=>plusSlides(1)}>&#10095;</a>
-          <div className='slider-img' draggable={true} ref={slideRef}
-          onDragStart={dragStart} onDragOver={dragOver} onDragEnd={dragEnd}
-          >
-              {
-               product.images.map((image,i)=>(
-                  <div key={i} className={`slider-box ${i+1===slideindex && "active"}`}
-                  onClick={()=> setslideindex(i+1) }
-                  >
-                      <img src={image.src} />
-                  </div>
-               )) 
-              }
-          </div>
+      <div className='bigbox'>
 
-       </div>
-       <div className='product-page-detail'>
-         <strong>{product.name}</strong>
-         <p className='product-category'>
-            {product.brand}
-         </p>
-          <p className='product-price'>
-      ${Math.round(product.price)}
-          </p>
-      <p className='small-desc'>
-      Black coat from Saint Laurent. Crafted from velvet fabric, this style features a waist-cinching cord belt with fringes, faux-fur trimming on the collar, two slip pockets, long sleeves, a single back vent and a silk lining. Color: black
-      </p>
+      {
       
-       <div className='product-color'>
-           {/* <button style={{background:color}}>1</button>      */}
-           {/* <button>2</button>         */}
+      data.length > 0 && data.map((elem)=>{
+
+         return <section className='product-details'>
+ 
+ <div className='product-page-img'>                  
+      <img src={elem.image}/>
+     
+  </div>
+
+  <div className='product-page-detail'>
+    <strong>{elem.description}</strong>
+    <p className='product-category'>
+       {elem.category}
+    </p>
+     <p className='product-price'>
+       {elem.price}
+     </p>
+ <p className='small-desc'>
+ Black coat from Saint Laurent. Crafted from velvet fabric, this style features a waist-cinching cord belt with fringes, faux-fur trimming on the collar, two slip pockets, long sleeves, a single back vent and a silk lining
+ </p>
+ 
+  <div className='product-options'>
+    <span> Size : -  </span>
+    
+       <div >
+            <h1>  M   S   L   X  XL  XXL  </h1>
        </div>
+     
+    
+        
+  </div>
 {/* ---------------------- */}
-       <div className='product-page-offers'>
-        <i  className='fa-solid fa-tag' />
-        {product.discount}%Discount
-       </div>
+  <div className='product-page-offers'>
+   <i  className='fa-solid fa-tag' />
+   {product.discount}%Discount
+  </div>
 
-       <div className='cart-btns'>
-           <a href='#' className='add-to-cart'>Add To Cart</a>
-           <a href='#' className='add-to-cart buy-now'>Buy Now</a>
-       </div>
+  <div className='cart-btns'>
+      <Link to="/cart">
+      <a href='#'  className='add-to-cart'>Add To Cart</a>
+      </Link>
+      <a href='#' className='add-to-cart buy-now'>Buy Now</a>
+  </div>
 
-  {/* ====== */}
+{/* ====== */}
 
-       </div>
+  </div>
 
-     </section>
+</section>
+
+         })
+         
+      }
+
+    
+
+
+
      <section className='product-info'>
-   
-     <ul className='product-info-menu'> 
-          <li className='p-info-list'>
-            <li>Product Details</li>
-            <li>Product Details</li>
-            <li>Product Details</li>
-            <li>Product Details</li>
-          </li>
-     </ul>
-        <div className='info-container'>
-
-        </div>
+       <ul className='product-info-menu'>
+          {
+            product.infos.map(info =>(
+               <li onClick={() => setinfotitle(info.title) } 
+  className={`p-info-list ${info.title===infotitle ? "active": "" }` }>
+                {info.title}
+                </li>
+            ))
+          }
+       </ul>
+       {
+            product.infos.map(info =>(
+              <div key={info.title}
+        className={`info-container ${info.title===infotitle ? "active" : "" }`}>
+                  {info.content}
+              </div> 
+            ))
+      }
+      
      </section>
+
+     </div>
 
      </React.Fragment>
    
@@ -209,3 +231,4 @@ const Details = () => {
 }
 
 export default Details
+
