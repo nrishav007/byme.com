@@ -385,6 +385,7 @@ export const GetMensJeansFailure = ( ) =>{
 };
 
 
+
 //GetWishlist
 export const GetWishListRequest = ( ) =>{
     return {
@@ -402,5 +403,28 @@ export const GetWishListSuccess = (payload) =>{
 export const GetWishListFailure = ( ) =>{
     return {
         type : types.GET_WISHLIST_FAILURE
+    }
+};
+
+
+
+
+//GetCart
+export const GetCartRequest = ( ) =>{
+    return {
+        type : types.GET_CART_REQUEST
+    }
+};
+
+export const GetCartSuccess = (payload) =>{
+    return {
+        type : types.GET_CART_SUCCESS,
+        payload,
+    }
+};
+
+export const GetCartFailure = ( ) =>{
+    return {
+        type : types.GET_CART_FAILURE
     }
 };

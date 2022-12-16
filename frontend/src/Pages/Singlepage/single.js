@@ -1,6 +1,5 @@
 import React from 'react'
-import Navbar from '../../Components/Navbar'
-import Bread from './Bread'
+import Footer from '../../Components/Footer'
 import Details from './Details'
 import "./Sin.css"
 
@@ -8,10 +7,8 @@ export const Single = () => {
   return (
     <div className='container'>
      {/* <Navbar/> */}
-     
-
      <Details/>
-
+     <Footer/>
     </div>
   )
 }
