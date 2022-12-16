@@ -130,11 +130,24 @@ export const MensJeansData = (page=1,setTotalPage) =>{
 export const AddToWishListData = (payload) =>{
     return axios.post(`https://coral-perch-cuff.cyclic.app/wish/create`, payload,{
         headers : {
-            "Authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
         }
     })
 }
 
 export const GetWishListData = ( ) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/wish`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/wish`,{
+        headers : {
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
+}
+
+
+export const DeleteWishList = (id) =>{
+    return axios.delete(`https://coral-perch-cuff.cyclic.app/wish/delete/${id}`,{
+        headers : {
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
 }
