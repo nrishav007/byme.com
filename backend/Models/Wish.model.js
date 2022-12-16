@@ -5,6 +5,7 @@ const wishSchema=mongoose.Schema({
     description:String,
     price:String,
     category:String,
+    type:String,
     userID:String
 });
 const WishModel=mongoose.model("Bymewish",wishSchema);
