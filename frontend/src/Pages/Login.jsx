@@ -28,7 +28,7 @@ import axios from "axios";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { googleSignIn, facebookSignIn,userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const toast =useToast()
@@ -43,6 +43,7 @@ import axios from "axios";
       }
        await  axios.post("https://coral-perch-cuff.cyclic.app/login", payload).then((res)=>{
         const user=(res)
+        userLogin(res.data.token)
         toast({
           position : 'top',
           colorScheme : 'green', 
