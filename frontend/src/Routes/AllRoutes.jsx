@@ -9,11 +9,15 @@ import WomensJackets from "../Components/WomenJackets";
 import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
+import Cart from "../Pages/Cartpage/Cart";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
 import Signup from "../Pages/Signup";
+
+import { Single } from "../Pages/Singlepage/Single";
 import WishlistPage from "../Pages/WishListPage";
+
 import WomensPage from "../Pages/WomensPage";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 
@@ -36,7 +40,11 @@ export default function AllRoutes ( ) {
             <Route path="/men/sweaters" element={<MensSweaters/>}/>
             <Route path="/men/jackets" element={<MensJacketsPage/>}/>
             <Route path="/men/jeans" element={<MensJeansPage/>}/>
+
+            <Route path="/product/single/:id" element={<Single/>}/>
+            <Route path="/cart"  element={<Cart/>} />
             <Route path="/wishlist" element={<WishlistPage/>}/>
+
         </Routes>
         </> 
     )

@@ -52,8 +52,9 @@ export default function AuthContextProvider({ children }) {
       unsubscribe();
     };
   }, []);
-  
-  
+
+  // console.log("user",user)
+
 
   return (
     <AuthContext.Provider
