@@ -41,7 +41,7 @@ export default function AuthContextProvider({ children }) {
     return signInWithPopup(auth, provider);
   }
 
- 
+ console.log("user_Auth",user_Auth)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
