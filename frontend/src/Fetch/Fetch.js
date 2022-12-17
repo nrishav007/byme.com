@@ -183,3 +183,13 @@ export const DeleteCart = (id) =>{
         }
     })
 }
+
+
+export const AddProduct = (payload) =>{
+    return axios.post(`https://coral-perch-cuff.cyclic.app/product/create`, payload)
+}
+
+
+export const DeleteProduct = (id) =>{
+    return axios.delete(`https://coral-perch-cuff.cyclic.app/product/delete/${id}`)
+}

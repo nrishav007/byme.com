@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import { Admin } from "../admin/Admin";
+import AdminProducts from "../admin/Products";
 import MensBeachWear from "../Components/MensBeach";
 import MensCoatsPage from "../Components/MensCoat";
 import MensJacketsPage from "../Components/MensJackets";
@@ -10,11 +11,8 @@ import WomensJackets from "../Components/WomenJackets";
 import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
-
 import CartPage from "../Pages/CartPage";
-
 import CheckoutPage from "../Pages/CheckoutPage";
-
 import { DummyData } from "../Pages/DummyData";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
@@ -54,6 +52,7 @@ export default function AllRoutes ( ) {
             <Route path="/payment" element={<PaymentPage/>}/>
             <Route path="/checkout" element={<CheckoutPage/>}/>
             <Route path="/admin" element={<Admin/>} />
+            {/* <Route path="/adminproducts" element={<AdminProducts/>}/> */}
         </Routes>
         </> 
     )

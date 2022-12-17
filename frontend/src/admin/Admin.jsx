@@ -1,13 +1,12 @@
 import React from "react"
-import {Box,Flex,IconButton,useDisclosure,Stack,Text,Image,Input, Tooltip, Button} from '@chakra-ui/react';
+import {Box,Flex,IconButton,useDisclosure,Stack,Text,Image,Tooltip} from '@chakra-ui/react';
 import {Link, Navigate} from "react-router-dom"
 import { HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
-import {BsCartCheck, BsSearch} from "react-icons/bs"
 import { useContext } from 'react';
 import { AuthContext } from '../context/AppContext';
-import {FaUserCircle} from "react-icons/fa"
 import {BiLogIn,BiLogOut} from "react-icons/bi"
-import {AiOutlineHeart} from "react-icons/ai"
+import AdminProducts from "./Products";
+
 
  export const Admin = () =>{
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,6 +56,10 @@ import {AiOutlineHeart} from "react-icons/ai"
             </Box>
           ) : null}
         </Box>
+
+        <Box h='120px'></Box>
+
+        <AdminProducts/>
 
         </>
     )
