@@ -14,19 +14,26 @@ wish.get("/", async (req, res) => {
   
   wish.post("/create", async (req, res) => {
     try {
-      await WishModel.create(req.body);
-      res.status(200).send({ msg: "Wish Added" });
+      const data=await WishModel.find({productID:req.body.productID,userID:req.body.userID});
+      if(data.length>0){
+        res.status(200).send({msg:"Product already in wishlist"});
+      }
+      else{
+        await WishModel.create(req.body);
+      res.status(200).send({ msg: "Product Added to wishlist" });
+      }
+      
     } catch (e) {
       console.log(e);
       res.status(400).send({ msg: "Not Found" });
     }
   });
   
-  wish.delete("/:userID", async (req, res) => {
+  wish.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
         await WishModel.findByIdAndDelete(userID);
-        res.status(200).send({ msg: "Wish removed" });
+        res.status(200).send({ msg: "Product removed from wishlist" });
       } catch (e) {
         console.log(e);
         res.status(400).send({ msg: "Not Found" });
