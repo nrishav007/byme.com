@@ -28,7 +28,7 @@ import Footer from "../Components/Footer";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { googleSignIn, facebookSignIn,userLogin } = useContext(AuthContext);
+    const { googleSignIn, facebookSignIn,userLogin,setUserName} = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const toast =useToast()
@@ -42,6 +42,7 @@ import Footer from "../Components/Footer";
         password
       }
        await  axios.post("https://coral-perch-cuff.cyclic.app/login", payload).then((res)=>{
+        setUserName(res.data.displayName)
         const user=(res)
         userLogin(res.data.token)
         toast({
@@ -55,7 +56,7 @@ import Footer from "../Components/Footer";
           navigate("/")
         }
         else{
-         navigate("/login")
+         navigate("/  ")
         }
         console.log(user)
         setLoading(false)

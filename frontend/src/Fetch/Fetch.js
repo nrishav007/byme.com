@@ -25,7 +25,7 @@ export const HotRightNowData = ( ) =>{
 }
 
 export const WomensAllClothingData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=dresses&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=dresses&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -33,7 +33,7 @@ export const WomensAllClothingData = (page=1,setTotalPage) =>{
 }
 
 export const WomensCoatsData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=coats&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=coats&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -41,7 +41,7 @@ export const WomensCoatsData = (page=1,setTotalPage) =>{
 }
 
 export const WomensSwimWearData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=beachwear&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=beachwear&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -49,7 +49,7 @@ export const WomensSwimWearData = (page=1,setTotalPage) =>{
 }
 
 export const WomensHosieryrData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=hosiery&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=hosiery&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -58,7 +58,7 @@ export const WomensHosieryrData = (page=1,setTotalPage) =>{
 
 
 export const WomensJacketsData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jackets&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jackets&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -67,7 +67,7 @@ export const WomensJacketsData = (page=1,setTotalPage) =>{
 
 
 export const WomensJeansData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jeans&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/women?category=jeans&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -76,7 +76,7 @@ export const WomensJeansData = (page=1,setTotalPage) =>{
 
 
 export const MensAllData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=shirts&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=shirts&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -85,7 +85,7 @@ export const MensAllData = (page=1,setTotalPage) =>{
 
 
 export const MensCoatsData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=coats&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=coats&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -93,7 +93,7 @@ export const MensCoatsData = (page=1,setTotalPage) =>{
 }
 
 export const MensBeachWearData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=beachwear&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=beachwear&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -102,7 +102,7 @@ export const MensBeachWearData = (page=1,setTotalPage) =>{
 
 
 export const MensSweatersData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=sweaters&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=sweaters&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -111,7 +111,7 @@ export const MensSweatersData = (page=1,setTotalPage) =>{
 
 
 export const MensJacketsData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=jackets&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=jackets&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
@@ -120,7 +120,7 @@ export const MensJacketsData = (page=1,setTotalPage) =>{
 
 
 export const MensJeansData = (page=1,setTotalPage) =>{
-    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=jeans&page=${page}&limit=36`)
+    return axios.get(`https://coral-perch-cuff.cyclic.app/product/men?category=jeans&page=${page}&limit=12`)
     .then((res)=>{
         setTotalPage(Number(res.headers.get('X-Total-Count')))
         return res
