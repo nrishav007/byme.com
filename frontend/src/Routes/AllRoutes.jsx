@@ -9,7 +9,7 @@ import WomensJackets from "../Components/WomenJackets";
 import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
-import CartPage from "../Pages/CartPage
+import CartPage from "../Pages/CartPage";
 import { DummyData } from "../Pages/DummyData";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
@@ -19,6 +19,7 @@ import Signup from "../Pages/Signup";
 import { Single } from "../Pages/Singlepage/Single";
 import WishlistPage from "../Pages/WishListPage";
 import WomensPage from "../Pages/WomensPage";
+
 
 export default function AllRoutes ( ) {
     return (
