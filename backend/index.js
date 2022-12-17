@@ -11,9 +11,9 @@ const port=process.env.PORT || 3400;
 const cors=require("cors");
 const user = require("./Routes/User.route");
 const product = require("./Routes/Product.route");
-const cart = require("./Routes/Cart.route");
 const wish = require("./Routes/Wish.route");
-const auth = require("./Middlewares/Auth.middleware");
+const cart = require("./Routes/Cart.route");
+const {auth} = require("./Middlewares/Auth.middleware");
 app.use(express.json());
 app.use(cors({
   origin:"*"
@@ -21,6 +21,7 @@ app.use(cors({
 app.use("/api",API);
 app.use("/user",user);
 app.use("/product",product);
+
 app.post("/signup", async (req, res) => {
     try {
       let data = await UserModel.find({ email: req.body.email });
@@ -73,9 +74,9 @@ app.post("/signup", async (req, res) => {
       res.status(404).send({ msg: "Failed to login" });
     }
   });
-app.use(auth)
-app.use("/cart",cart);
-app.use("/wish",wish);
+  app.use(auth)
+  app.use("/wish",wish);
+  app.use("/cart",cart);
 app.listen(port,()=>{
     try {
         database_connection;
