@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { Admin } from "../admin/Admin";
 import MensBeachWear from "../Components/MensBeach";
 import MensCoatsPage from "../Components/MensCoat";
 import MensJacketsPage from "../Components/MensJackets";
@@ -52,6 +53,7 @@ export default function AllRoutes ( ) {
             <Route path="/userdetails" element={<DummyData/>}/>
             <Route path="/payment" element={<PaymentPage/>}/>
             <Route path="/checkout" element={<CheckoutPage/>}/>
+            <Route path="/admin" element={<Admin/>} />
         </Routes>
         </> 
     )
