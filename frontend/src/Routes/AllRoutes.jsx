@@ -9,6 +9,7 @@ import WomensJackets from "../Components/WomenJackets";
 import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
+import { DummyData } from "../Pages/DummyData";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
@@ -37,6 +38,7 @@ export default function AllRoutes ( ) {
             <Route path="/men/jackets" element={<MensJacketsPage/>}/>
             <Route path="/men/jeans" element={<MensJeansPage/>}/>
             <Route path="/wishlist" element={<WishlistPage/>}/>
+            <Route path="/userdetails" element={<DummyData/>}/>
         </Routes>
         </> 
     )
