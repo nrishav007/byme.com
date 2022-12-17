@@ -178,10 +178,9 @@ const Details = () => {
  </p>
  
   <div className='product-options'>
-    <span> Size : -  </span>
-    
-       <div >
-            <h1>  M   S   L   X  XL  XXL  </h1>
+   
+       <div  className='size'>
+        <h1>  Size : -   M   S   L   X  XL  XXL  </h1>
        </div>
      
         
