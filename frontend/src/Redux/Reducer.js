@@ -20,6 +20,7 @@ const InitialData = {
     MensJeans : [ ],
     WishList : [ ],
     CartData : [ ],
+    Checkout : [ ],
     isLoading : false,
     isError : false
 }
@@ -604,6 +605,37 @@ export default function Reducer (state=InitialData, action) {
                 ...state,
                 isLoading : false,
                 CartData : [ ],
+                isError : true
+            }
+        };
+
+
+
+
+
+         //Checkout
+         case types.GET_CHECKOUT_REQUEST: {
+            return {
+                ...state,
+                isLoading : true,
+                isError : false
+            }
+        }
+        
+        case types.GET_CHECKOUT_SUCCESS: {
+            return {
+                ...state,
+                Checkout : payload,
+                isLoading : false,
+                isError : false
+            }
+        }
+        
+        case types.GET_CHECKOUT_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                Checkout : [ ],
                 isError : true
             }
         };
