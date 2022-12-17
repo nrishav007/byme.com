@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../Pages/firebase_config";
 import { useEffect } from "react";
@@ -40,6 +42,7 @@ export default function AuthContextProvider({ children }) {
     const provider = new FacebookAuthProvider();
     return signInWithPopup(auth, provider);
   }
+  
 
  console.log("user_Auth",user_Auth)
 
