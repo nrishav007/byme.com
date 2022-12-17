@@ -25,7 +25,7 @@ const product = {
       size:"M, S, L, X, XL, XXL",
       infos: [
         {
-        title:"ProductDetail",
+        title:"Product Detail",
         content:"Decorated with an all-over floral motif, this black short-sleeved Saint Laurent shirt is Italian-crafted and features a structured, yet fluid silhouette. 100% viscose.",
         },
         {
@@ -158,8 +158,10 @@ const Details = () => {
 
          return <section className='product-details'>
  
- <div className='product-page-img'>                  
+ <div className='product-page-img'>   
+    <div className='product-image'>
       <img src={elem.image}/>
+     </div>               
      
   </div>
 
@@ -182,7 +184,6 @@ const Details = () => {
             <h1>  M   S   L   X  XL  XXL  </h1>
        </div>
      
-    
         
   </div>
 {/* ---------------------- */}
