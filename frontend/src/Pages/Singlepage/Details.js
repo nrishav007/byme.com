@@ -1,16 +1,12 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
 import "./Deatil.css"
-// import SoldIcon from "."
-import Bread from './Bread';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { GetMensAllFailure, GetMensAllRequest, GetMensAllSuccess } from '../../Redux/Action';
-import { useDispatch } from 'react-redux';
-import { MensAllData } from '../../Fetch/Fetch';
 import Navbar from '../../Components/Navbar';
 import { Link } from 'react-router-dom';
 import { getsinglepage } from './../../Fetch/Fetch';
+import { useToast } from "@chakra-ui/react";
+import {AddToCartData} from "./../../Fetch/Fetch"
 
 const product = {
     
@@ -61,21 +57,19 @@ const Details = () => {
   const [change ,setChange] = useState(9)
   const [data, setData] = useState([])
   const params = useParams()
- const Dispatch = useDispatch()
   const [ infotitle , setinfotitle] = useState(product.infos[0].title)
   const slideRef = useRef()
+  const Toast = useToast( );
  
-  // console.log(params.id, 'id')
     const getData = () =>{
        getsinglepage(params.id).then((res)=>{
-         console.log(res.data,'from api')
          setData(res.data)
        })
        .catch((err)=>{
         console.log(err)
        })
     }
- console.log(data)
+//  console.log(data)
 
    useEffect(()=>{
      getData()
@@ -132,6 +126,23 @@ const Details = () => {
       slideRef.current.scrollLeft-=width
      }
    }
+
+
+   const handleAddToCart = (image,title,description,price,category,type,userID) =>{
+    const payload = {
+        image,
+        title,
+        description,
+        price,
+        category,
+        type,
+        productID : userID
+    };
+    return AddToCartData(payload).then((res)=>{
+        Toast({position : "top", title : `${res.data.msg}`, status : "success", duration : 3000});   
+    })
+    .catch((err)=> console.log(err))
+}   
    
   
 
@@ -181,10 +192,9 @@ const Details = () => {
   </div>
 
   <div className='cart-btns'>
-      <Link to="/cart">
-      <a href='#'  className='add-to-cart'>Add To Cart</a>
+      <Link>
+      <button className='add-to-cart' onClick={( ) =>handleAddToCart(elem.image,elem.title,elem.description,elem.price,elem.category,elem.type,elem.userID)}>Add To Cart</button>
       </Link>
-      <a href='#' className='add-to-cart buy-now'>Buy Now</a>
   </div>
 
 {/* ====== */}

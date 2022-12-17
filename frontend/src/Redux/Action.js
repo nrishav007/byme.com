@@ -364,7 +364,7 @@ export const GetMensJacketsFailure = ( ) =>{
 
 
 
-//MensJackets
+//MensJeans
 export const GetMensJeansRequest = ( ) =>{
     return {
         type : types.GET_MENS_JEANS_REQUEST
@@ -381,5 +381,50 @@ export const GetMensJeansSuccess = (payload) =>{
 export const GetMensJeansFailure = ( ) =>{
     return {
         type : types.GET_MENS_JEANS_FAILURE
+    }
+};
+
+
+
+//GetWishlist
+export const GetWishListRequest = ( ) =>{
+    return {
+        type : types.GET_WISHLIST_REQUEST
+    }
+};
+
+export const GetWishListSuccess = (payload) =>{
+    return {
+        type : types.GET_WISHLIST_SUCCESS,
+        payload,
+    }
+};
+
+export const GetWishListFailure = ( ) =>{
+    return {
+        type : types.GET_WISHLIST_FAILURE
+    }
+};
+
+
+
+
+//GetCart
+export const GetCartRequest = ( ) =>{
+    return {
+        type : types.GET_CART_REQUEST
+    }
+};
+
+export const GetCartSuccess = (payload) =>{
+    return {
+        type : types.GET_CART_SUCCESS,
+        payload,
+    }
+};
+
+export const GetCartFailure = ( ) =>{
+    return {
+        type : types.GET_CART_FAILURE
     }
 };

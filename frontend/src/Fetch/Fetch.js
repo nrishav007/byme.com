@@ -127,11 +127,11 @@ export const MensJeansData = (page=1,setTotalPage) =>{
     })
 }
 
-
 export const getsinglepage = (id) =>{
      return axios.get(`https://coral-perch-cuff.cyclic.app/product/single/${id}`)
 
 }
+
 export const AddToWishListData = (payload) =>{
     return axios.post(`https://coral-perch-cuff.cyclic.app/wish/create`, payload,{
         headers : {
@@ -151,6 +151,33 @@ export const GetWishListData = ( ) =>{
 
 export const DeleteWishList = (id) =>{
     return axios.delete(`https://coral-perch-cuff.cyclic.app/wish/delete/${id}`,{
+        headers : {
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
+}
+
+
+export const GetCart = ( ) =>{
+    return axios.get(`https://coral-perch-cuff.cyclic.app/cart`,{
+        headers : {
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
+}
+
+
+export const AddToCartData = (payload) =>{
+    return axios.post(`https://coral-perch-cuff.cyclic.app/cart/create`, payload,{
+        headers : {
+            "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
+        }
+    })
+}
+
+
+export const DeleteCart = (id) =>{
+    return axios.delete(`https://coral-perch-cuff.cyclic.app/cart/delete/${id}`,{
         headers : {
             "authorization" : `Bearer ${localStorage.getItem("logintoken")}`
         }
