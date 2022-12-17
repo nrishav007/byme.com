@@ -6,7 +6,7 @@ ByMe is an E-Commerce US based web application which sells products related to M
 
 ## Landing Page 
 
-![image](https://user-images.githubusercontent.com/103938174/208044367-3d919930-8c4c-47c6-a985-a591b2e7abc7.png)
+![image](https://user-images.githubusercontent.com/103938174/208248845-70fbc60c-cbcb-4709-80ae-ee6147309870.png)
 
 ## 
 ![image](https://user-images.githubusercontent.com/103938174/208044522-dcbdfa1f-1d2e-4c37-b8c4-e73f6e20178a.png)
