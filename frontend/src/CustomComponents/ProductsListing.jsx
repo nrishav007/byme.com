@@ -6,26 +6,23 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 
 import { AddToWishListData } from "../Fetch/Fetch";
-import { Link } from "react-router-dom";
 
-export default function ProductsListing ({data,isLoading,isError}) {
-    const Toast = useToast( );
 
-    const handleAddToWish = (image,title,price,category,description,type,_id) =>{
-        const payload = {
-            productID : _id,
-            image,
-            title,
-            price,
-            category,
-            description,
-            type
-        }
-        return AddToWishListData(payload).then((res)=>{
-            Toast({position : "top", title : `${res.data.msg}`, status : res.data.msg === 'Product already in wishlist' ? 'error' : 'success',duration : 3000})
-        })
-        .catch((err)=> console.log(err))
-    }
+    // const handleAddToWish = (image,title,price,category,description,type,_id) =>{
+    //     const payload = {
+    //         productID : _id,
+    //         image,
+    //         title,
+    //         price,
+    //         category,
+    //         description,
+    //         type
+    //     }
+    //     return AddToWishListData(payload).then((res)=>{
+    //         Toast({position : "top", title : `${res.data.msg}`, status : res.data.msg === 'Product already in wishlist' ? 'error' : 'success',duration : 3000})
+    //     })
+    //     .catch((err)=> console.log(err))
+    // }
 export default function ProductsListing({ data, isLoading, isError }) {
   const Toast = useToast();
 
@@ -108,3 +105,4 @@ export default function ProductsListing({ data, isLoading, isError }) {
         </>
         )
 }
+
