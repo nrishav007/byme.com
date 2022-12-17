@@ -67,7 +67,7 @@ export default function WishlistPage ( ) {
             {WishList.length > 0 && WishList.map((elem)=>{
                 return <Box  padding='10px' lineHeight={{base : '30px'}} key={elem._id}>
                     <Image src={elem.image} width={{base :'130px', md: '150px'}} m='auto'/>
-                    <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Title : {elem.title}</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>{elem.title}</Text>
                     <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
                     <Text fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px' onClick={( ) => handleAddToCart(elem.image,elem.title,elem.description,elem.price,elem.category,elem.type,elem.userID)}>Add To Cart</Text>
                     <Text fontSize={{base : '12px', md: '15px'}} onClick={( )=> DeleteFromWish(elem._id)} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px'>Remove</Text>

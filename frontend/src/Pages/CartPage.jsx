@@ -1,18 +1,20 @@
 import Navbar from "../Components/Navbar"
 import {useSelector,useDispatch} from "react-redux"
 import { GetCart,DeleteCart} from "../Fetch/Fetch";
-import { GetCartFailure, GetCartRequest, GetCartSuccess } from "../Redux/Action";
+import { GetCartFailure, GetCartRequest, GetCartSuccess, GetCheckoutSuccess } from "../Redux/Action";
 import { useEffect } from "react";
 import { Box, Flex, Image, SimpleGrid, Text, useToast } from "@chakra-ui/react";
 import ProgressLoader from "../CustomComponents/Progress";
+import { Link } from "react-router-dom";
 export default function CartPage ( ) {
     const Dispatch = useDispatch( );
     const Toast = useToast( );
-    const {isLoading,isError,CartData} = useSelector((s)=>{
+    const {isLoading,isError,CartData,Checkout} = useSelector((s)=>{
         return {
             isLoading : s.isLoading,
             isError : s.isError,
-            CartData : s.CartData
+            CartData : s.CartData,
+            Checkout : s.Checkout
         }
     })
     let count = CartData.length;
@@ -36,6 +38,12 @@ export default function CartPage ( ) {
         handleDelete(id).then(( )=> handleCart( ))
     }
 
+    const handleCheckOut = ( ) =>{
+        console.log(CartData)
+        Dispatch(GetCheckoutSuccess(CartData));
+        console.log(Checkout,'From CArt')
+    }
+
     useEffect(( ) =>{
         handleCart( );
     },[ ])
@@ -53,10 +61,9 @@ export default function CartPage ( ) {
                     <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>{elem.title}</Text>
                     <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
                     <Flex justifyContent='space-evenly'>
-                    <Text fontSize={{base : '12px', md: '15px'}} onClick={( )=> DeleteFromCart(elem._id)} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px' padding='7px'>Remove</Text>
-                    <Text fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px' padding='7px'>Checkout</Text>
+                    <Text fontSize={{base : '12px', md: '15px'}} onClick={( )=> DeleteFromCart(elem._id)} align='center' cursor='pointer' _hover={{"color" : "red"}} borderRadius='10px' padding='7px'>Remove</Text>
+                   <Link to='/checkout'><Text onClick={( ) => handleCheckOut( )} fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "green"}} borderRadius='10px' padding='7px'>Checkout</Text></Link>
                     </Flex>
-                    
                 </Box>
             })}
         </SimpleGrid>

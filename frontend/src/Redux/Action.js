@@ -428,3 +428,25 @@ export const GetCartFailure = ( ) =>{
         type : types.GET_CART_FAILURE
     }
 };
+
+
+
+//Checkout
+export const GetCheckoutRequest = ( ) =>{
+    return {
+        type : types.GET_CHECKOUT_REQUEST
+    }
+};
+
+export const GetCheckoutSuccess = (payload) =>{
+    return {
+        type : types.GET_CHECKOUT_SUCCESS,
+        payload,
+    }
+};
+
+export const GetCheckoutFailure = ( ) =>{
+    return {
+        type : types.GET_CHECKOUT_FAILURE
+    }
+};

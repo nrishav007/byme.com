@@ -262,6 +262,7 @@ export const DummyData = () => {
       setLoading(true);
       setError("");
       await result.confirm(otp);
+      // handlePayment( );
       navigate("/");
       setLoading(false);
     } catch (err) {
@@ -298,7 +299,7 @@ export const DummyData = () => {
   } else {
     return (
       <>
-        <Box
+        <Box 
           style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
           w={"30%"}
           p={"6"}
