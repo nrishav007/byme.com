@@ -9,12 +9,17 @@ import WomensJackets from "../Components/WomenJackets";
 import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
+
 import CartPage from "../Pages/CartPage";
+
+import CheckoutPage from "../Pages/CheckoutPage";
+
 import { DummyData } from "../Pages/DummyData";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
 import NotFoundPage from "../Pages/NotFoundPage";
+import PaymentPage from "../Pages/PaymentPage";
 import Signup from "../Pages/Signup";
 import { Single } from "../Pages/Singlepage/Single";
 import WishlistPage from "../Pages/WishListPage";
@@ -45,6 +50,8 @@ export default function AllRoutes ( ) {
             <Route path="*" element={<NotFoundPage/>}/>
             <Route path="/cart" element={<CartPage/>}/>
             <Route path="/userdetails" element={<DummyData/>}/>
+            <Route path="/payment" element={<PaymentPage/>}/>
+            <Route path="/checkout" element={<CheckoutPage/>}/>
         </Routes>
         </> 
     )
