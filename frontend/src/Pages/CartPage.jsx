@@ -60,10 +60,8 @@ export default function CartPage ( ) {
                     <Image src={elem.image} width={{base :'130px', md: '150px'}} m='auto'/>
                     <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>{elem.title}</Text>
                     <Text fontSize={{base : '12px', md: '15px'}} fontWeight='550' align='center'>Price : {elem.price}</Text>
-                    <Flex justifyContent='space-evenly'>
-                    <Text fontSize={{base : '12px', md: '15px'}} onClick={( )=> DeleteFromCart(elem._id)} align='center' cursor='pointer' _hover={{"color" : "red"}} borderRadius='10px' padding='7px'>Remove</Text>
-                   <Link to='/checkout'><Text onClick={( ) => handleCheckOut( )} fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "green"}} borderRadius='10px' padding='7px'>Checkout</Text></Link>
-                    </Flex>
+                    <Text onClick={( )=> DeleteFromCart(elem._id)} fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px'>Remove</Text>
+                    <Link to='/checkout'><Text onClick={( ) => handleCheckOut( )} fontSize={{base : '12px', md: '15px'}} align='center' cursor='pointer' _hover={{"color" : "white", bg : 'black'}} borderRadius='10px'>Checkout</Text></Link>
                 </Box>
             })}
         </SimpleGrid>
