@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../Pages/firebase_config";
 import { useEffect } from "react";
@@ -40,6 +42,16 @@ export default function AuthContextProvider({ children }) {
     const provider = new FacebookAuthProvider();
     return signInWithPopup(auth, provider);
   }
+  function setUpCaptcha(number) {
+    const recaptchaVerifier = new RecaptchaVerifier(
+      "recaptcha-container",
+      {},
+      auth
+    );
+    recaptchaVerifier.render();
+    return signInWithPhoneNumber(auth,number,recaptchaVerifier)
+  }
+
 
  console.log("user_Auth",user_Auth)
 
@@ -58,7 +70,7 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, logOut, googleSignIn, facebookSignIn,user_Auth,userLogin }}
+      value={{ user, logOut, googleSignIn, facebookSignIn,user_Auth,userLogin,setUpCaptcha }}
     >
       {children}
     </AuthContext.Provider>

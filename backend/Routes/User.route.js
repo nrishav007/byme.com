@@ -22,7 +22,7 @@ user.get("/", async (req, res) => {
     }
   });
   
-  user.patch("/:userID", async (req, res) => {
+  user.patch("/update/:userID", async (req, res) => {
     try {
       const userID = req.params.userID;
       await UserModel.findByIdAndUpdate({_id:userID}, req.body);
@@ -33,7 +33,7 @@ user.get("/", async (req, res) => {
     }
   });
   
-  user.delete("/:userID", async (req, res) => {
+  user.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
         await UserModel.findByIdAndDelete(userID);
