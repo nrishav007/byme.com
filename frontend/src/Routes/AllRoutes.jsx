@@ -10,6 +10,7 @@ import WomenHosiery from "../Components/WomensHosiery";
 import WomensJeansPage from "../Components/WomensJeans";
 import WomenSwimWear from "../Components/WomensSwim";
 import Cart from "../Pages/Cartpage/Cart";
+import { DummyData } from "../Pages/DummyData";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import MensPage from "../Pages/MensPage";
@@ -44,6 +45,7 @@ export default function AllRoutes ( ) {
             <Route path="/product/single/:id" element={<Single/>}/>
             <Route path="/cart"  element={<Cart/>} />
             <Route path="/wishlist" element={<WishlistPage/>}/>
+            <Route path="/userdetails" element={<DummyData/>}/>
 
         </Routes>
         </> 
