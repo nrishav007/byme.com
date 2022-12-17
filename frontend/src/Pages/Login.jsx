@@ -20,7 +20,7 @@ import {
   import { AuthContext } from "../context/AppContext";
   import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Footer from "../Components/Footer";
+
 
 
   
@@ -227,7 +227,6 @@ import Footer from "../Components/Footer";
             </form>
           </Box>
         </Flex>
-        <Footer/>
       </Box>
     );
   }

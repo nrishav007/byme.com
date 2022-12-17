@@ -1,27 +1,57 @@
-import { Box, Image, SimpleGrid, Text, useToast} from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Text, useToast } from "@chakra-ui/react";
 import ProgressLoader from "./Progress";
+import { useSelector } from "react-redux";
+import { useNavigate, Link, useParams } from "react-router-dom";
+
+import { AiOutlineHeart } from "react-icons/ai";
+
 import { AddToWishListData } from "../Fetch/Fetch";
-import { Link } from "react-router-dom";
 
-export default function ProductsListing ({data,isLoading,isError}) {
-    const Toast = useToast( );
 
-    const handleAddToWish = (image,title,price,category,description,type,_id) =>{
-        const payload = {
-            productID : _id,
-            image,
-            title,
-            price,
-            category,
-            description,
-            type
-        }
-        return AddToWishListData(payload).then((res)=>{
-            Toast({position : "top", title : `${res.data.msg}`, status : res.data.msg === 'Product already in wishlist' ? 'error' : 'success',duration : 3000})
-        })
-        .catch((err)=> console.log(err))
-    }
+    // const handleAddToWish = (image,title,price,category,description,type,_id) =>{
+    //     const payload = {
+    //         productID : _id,
+    //         image,
+    //         title,
+    //         price,
+    //         category,
+    //         description,
+    //         type
+    //     }
+    //     return AddToWishListData(payload).then((res)=>{
+    //         Toast({position : "top", title : `${res.data.msg}`, status : res.data.msg === 'Product already in wishlist' ? 'error' : 'success',duration : 3000})
+    //     })
+    //     .catch((err)=> console.log(err))
+    // }
+export default function ProductsListing({ data, isLoading, isError }) {
+  const Toast = useToast();
 
+  const handleAddToWish = (
+    image,
+    title,
+    price,
+    category,
+    description,
+    type,
+    _id
+  ) => {
+    const payload = {
+      productID: _id,
+      image,
+      title,
+      price,
+      category,
+      description,
+      type,
+    };
+    return AddToWishListData(payload)
+      .then((res) => {
+        Toast({ position: "top", title: "Added To Wishlist" });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  
     return (
         <>
         {isLoading && <ProgressLoader size='sm'  colorScheme='black'/>}
@@ -39,3 +69,4 @@ export default function ProductsListing ({data,isLoading,isError}) {
         </>
         )
 }
+
