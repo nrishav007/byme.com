@@ -13,5 +13,6 @@ export const Single = () => {
      <Footer/>
     </div>
   )
+  
 }
 
