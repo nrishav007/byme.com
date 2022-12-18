@@ -26,7 +26,7 @@ product.get("/:type",async(req,res)=>{
 
 product.post("/create", async (req, res) => {
     try {
-      await UserModel.create(req.body);
+      await ProductModel.create(req.body);
       res.status(200).send({ msg: "Product Added" });
     } catch (e) {
       console.log(e);
@@ -37,7 +37,7 @@ product.post("/create", async (req, res) => {
   product.patch("/update/:userID", async (req, res) => {
     try {
       const userID = req.params.userID;
-      await UserModel.findByIdAndUpdate({_id:userID}, req.body);
+      await ProductModel.findByIdAndUpdate({_id:userID}, req.body);
       res.status(200).send({ msg: "Product Modified" });
     } catch (e) {
       console.log(e);
@@ -48,7 +48,7 @@ product.post("/create", async (req, res) => {
   product.delete("/delete/:userID", async (req, res) => {
       try {
         const userID = req.params.userID;
-        await UserModel.findByIdAndDelete(userID);
+        await ProductModel.findByIdAndDelete(userID);
         res.status(200).send({ msg: "Product deleted" });
       } catch (e) {
         console.log(e);

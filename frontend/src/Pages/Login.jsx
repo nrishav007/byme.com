@@ -28,7 +28,7 @@ import axios from "axios";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { googleSignIn, facebookSignIn,userLogin } = useContext(AuthContext);
+    const { googleSignIn, facebookSignIn,userLogin,setUserName} = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const toast =useToast()
@@ -42,6 +42,7 @@ import axios from "axios";
         password
       }
        await  axios.post("https://coral-perch-cuff.cyclic.app/login", payload).then((res)=>{
+        setUserName(res.data.displayName)
         const user=(res)
         userLogin(res.data.token)
         toast({
@@ -55,7 +56,7 @@ import axios from "axios";
           navigate("/")
         }
         else{
-         navigate("/login")
+         navigate("/  ")
         }
         console.log(user)
         setLoading(false)
@@ -65,34 +66,33 @@ import axios from "axios";
       e.preventDefault();
       try {
      const user= await googleSignIn();
-     console.log(user);
-     if(user.email!==undefined){
+     if(user.user.email!==undefined){
       const payload={
-        name:user.displayName,
-        email:user.email,
-        password:`${user.displayName.split(" ")[0]}@byme`
+        name:user.user.displayName,
+        email:user.user.email,
+        password:`${user.user.displayName.split(" ")[0]}@byme`
       }
       axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
-        console.log(res.data)
+        console.log("login",res)
           if(res.status===200){
            const  login_payload={
-            email:user.email,
-        password:`${user.displayName.split(" ")[0]}@byme`
+            email:user.user.email,
+            password:`${user.user.displayName.split(" ")[0]}@byme`
            }
             axios.post("https://coral-perch-cuff.cyclic.app/login",login_payload).then((res)=>{
-              console.log(res)
+              localStorage.setItem("logintoken",res.data.token);
             })
           }
         })
-      console.log("byme",user.email, user.displayName)
     }
+    navigate("/");
      toast({
         position : 'top',
         colorScheme : 'green', 
         status : "success",
         title:"Login sucessfully "
     })
-        navigate("/");
+        
       } catch (error) {
         console.log(error.message);
       }

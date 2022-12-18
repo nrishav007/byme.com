@@ -219,6 +219,8 @@ import PhoneInput from "react-phone-number-input";
 import { useContext } from "react";
 import { AuthContext } from "../context/AppContext";
 import { Link, useNavigate } from "react-router-dom";
+import useRazorpay from "react-razorpay";
+import swal from "sweetalert";
 // import { async } from "@firebase/util";
 
 export const DummyData = () => {
@@ -234,7 +236,43 @@ export const DummyData = () => {
   const [result, setResult] = useState("");
   const [temp, setTemp] = useState(false);
   const [loading, setLoading] = useState(false);
+  const Razorpay = useRazorpay();
+  const handlePayment = () => {
+    const order = {
+      currency: "INR",
+      receipt: "qwsaq1",
+    };
+    const options = {
+      key: "rzp_test_sYtoH5zOp7BCJ8",
+      amount: 1000 * 100,
+      currency: "INR",
+      name: "Byme.com",
+      image: "https://i.ibb.co/344xRpF/byme-1.jpg",
+      order_id: order.id,
+      handler: (res) => {
+        swal({
+          title: "Order placed successfully",
+          text: "Enjoy your day",
+          icon: "success",
+        });
+        navigate("/");
+      },
+      prefill: {
+        name: "name",
+        email: "email",
+        contact: "number",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  };
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -262,8 +300,9 @@ export const DummyData = () => {
       setLoading(true);
       setError("");
       await result.confirm(otp);
-      // handlePayment( );
-      navigate("/");
+      handlePayment();
+      // handlePayment();
+      
       setLoading(false);
     } catch (err) {
       setError(err.mesage);
@@ -272,12 +311,9 @@ export const DummyData = () => {
   };
 
   const skeletonFunction = () => {
-
     setTimeout(() => {
-    
       navigate("/login");
     }, 3000);
-  
   };
   if (loading) {
     return (
@@ -299,7 +335,7 @@ export const DummyData = () => {
   } else {
     return (
       <>
-        <Box 
+        <Box
           style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
           w={"30%"}
           p={"6"}
@@ -362,19 +398,19 @@ export const DummyData = () => {
               />
               <Box>
                 <FormControl isRequired>
-                <FormLabel>Mobile No.</FormLabel>
-                <PhoneInput
-                  defaultCountry="IN"
-                  value={number}
-                  onChange={setNumber}
-                  placeholder="Enter Phone Number"
-                />
+                  <FormLabel>Mobile No.</FormLabel>
+                  <PhoneInput
+                    defaultCountry="IN"
+                    value={number}
+                    onChange={setNumber}
+                    placeholder="Enter Phone Number"
+                  />
                 </FormControl>
               </Box>
-            
+
               <Box id="recaptcha-container"></Box>
             </FormControl>
-            
+
             <Box
               mt={2}
               w={"100%"}
