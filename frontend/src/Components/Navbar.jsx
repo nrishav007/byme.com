@@ -10,21 +10,25 @@ import {AiOutlineHeart} from "react-icons/ai"
 
 export default function Navbar( ) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const {user,logOut} = useContext(AuthContext);
+    const {user,logOut,user_Auth,userLogin,userName} = useContext(AuthContext);
 
     const handleLogOut = ( ) =>{
       logOut( )
     }
 
+
     const handleCheck = ( ) =>{
-      if(user.displayName === undefined) 
+      if(user.displayName === undefined ) 
       {
-        <Navigate to='/login'/>
+        <Navigate to='/'/>
       }
       else{
         handleLogOut( );
       }
     }
+
+    console.log("USERNAme", userName)
+
     return (
       <>
         <Box px={4} mb={20} className='ChackraNavBar' shadow='lg' borderBottom={{base : '0px', md :'1px solid black'}} padding='10px'>
@@ -48,10 +52,10 @@ export default function Navbar( ) {
                </Flex>
 
                <Flex width={{base : "", md  : '25%', lg :'15%'}} justifyContent='space-around' fontSize='25px'>
-               <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ? 'Sign Up' : 'Log Out'}><Link to={user?.displayName === undefined ? '/login' : '/'} ><Text onClick={handleCheck}>{user?.displayName === undefined ? <BiLogIn/> : <BiLogOut/>}</Text></Link></Tooltip>
+               <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ? userName !== '' ? 'Log Out' : 'Log In' : 'Log Out'}><Link to={user?.displayName === undefined ? userName !== '' ? '/' : '/signup' : '/login'} ><Text onClick={handleCheck}>{user?.displayName === undefined ? userName !== '' ? <BiLogOut/> : <BiLogIn/> : <BiLogOut/>}</Text></Link></Tooltip>
                <Tooltip bg='#CBD5E0' color='black' label='Wishlist'><Link to="/wishlist"><Text><AiOutlineHeart/></Text></Link></Tooltip>
                <Tooltip bg='#CBD5E0' color='black' label='Cart'><Link to='/cart'><Text><BsCartCheck/></Text></Link></Tooltip>
-              <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ?  'Profile' :  user.displayName}><Link><Text><FaUserCircle/></Text></Link></Tooltip>
+              <Tooltip bg='#CBD5E0' color='black' label={user?.displayName === undefined ?  userName !== '' ? userName : 'Profile' : user.displayName}><Link><Text><FaUserCircle/></Text></Link></Tooltip>
               </Flex>
               </Flex>
           </Flex> 

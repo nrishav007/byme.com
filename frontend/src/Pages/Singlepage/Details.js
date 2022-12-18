@@ -6,6 +6,7 @@ import Navbar from '../../Components/Navbar';
 import { Link } from 'react-router-dom';
 import { getsinglepage } from './../../Fetch/Fetch';
 import { useToast } from "@chakra-ui/react";
+import ReactImageMagnify from 'react-image-magnify';
 import {AddToCartData} from "./../../Fetch/Fetch"
 
 const product = {
@@ -160,8 +161,31 @@ const Details = () => {
  
  <div className='product-page-img'>   
     <div className='product-image'>
-      <img src={elem.image}/>
+      {/* <img src={elem.image}/> */}
+      <ReactImageMagnify
+                        {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: elem.image,
+                            },
+                            largeImage: {
+                                src: elem.image,
+                                width:1200,
+                                height: 1800,
+                            },
+                            enlargedImageContainerDimensions: {
+                                width: '150%',
+                                height: '150%',
+                            },
+                        }}
+                    />
      </div>               
+     <div className='show data'>
+
+    
+     </div>
+
      
   </div>
 
