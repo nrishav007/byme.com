@@ -33,7 +33,7 @@ export default function ProductsListing({ data, isLoading, isError }) {
     };
     return AddToWishListData(payload)
       .then((res) => {
-        Toast({ position: "top", title: "Added To Wishlist" });
+        Toast({ position: "top", title: res.data.msg, status : res.data.msg === 'Product Added to wishlist' ? "success" : "error"});
       })
       .catch((err) => console.log(err));
   };

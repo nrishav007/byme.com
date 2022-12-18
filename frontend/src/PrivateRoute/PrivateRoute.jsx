@@ -5,8 +5,8 @@ import { AuthContext } from "../context/AppContext"
 
 
 export const PrivateRoute=({children})=>{
-    const {user_Auth}=useContext(AuthContext)
-    if(!user_Auth.user_Auth){
+    const {user}=useContext(AuthContext)
+    if(!user){
         return <Navigate to="/login"/>
     }
     return children

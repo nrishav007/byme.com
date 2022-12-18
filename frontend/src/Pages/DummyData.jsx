@@ -419,7 +419,7 @@ export const DummyData = () => {
               gap={"2rem"}
               justifyContent={"right"}
             >
-              <Link to="/login">
+              <Link to="/cart">
                 <Button mt={4} colorScheme="red" type="submit">
                   Cancel
                 </Button>

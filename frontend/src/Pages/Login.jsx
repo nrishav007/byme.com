@@ -53,7 +53,7 @@ import axios from "axios";
         })
         if(res.data.token){
           localStorage.setItem("logintoken",res.data.token)
-          navigate("/")
+          navigate(res.data.administration === true ? '/admin' : '/')
         }
         else{
          navigate("/  ")
