@@ -22,7 +22,6 @@ export class Helpbot extends Component {
   }
 
 
-
   render() {
     return (
       <div>
