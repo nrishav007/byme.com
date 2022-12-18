@@ -14,6 +14,7 @@ user.get("/", async (req, res) => {
   
   user.post("/create", async (req, res) => {
     try {
+      req.body.administration=false;
       await UserModel.create(req.body);
       res.status(200).send({ msg: "user Added" });
     } catch (e) {
