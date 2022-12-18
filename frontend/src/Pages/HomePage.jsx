@@ -14,9 +14,12 @@ import { GetHomeSlideShowFailure, GetHomeSlideShowRequest, GetHomeSlideShowSucce
 import HomeMainBodyComponent from "../Components/HomeMainBody";
 import HomeMainBodyComponent1 from "../Components/HomeMainBody1";
 import ProgressLoader from "../CustomComponents/Progress";
+import { useContext } from "react";
+import { AuthContext } from "../context/AppContext";
 
 export default function HomePage ( ) {
     const Dispatch = useDispatch( );
+    const {user_Auth} = useContext(AuthContext)
     const {HomeSlideShow,isLoading,isError} = useSelector((store) =>{
         return {
             HomeSlideShow : store.HomeSlideShow,

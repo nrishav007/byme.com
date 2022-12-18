@@ -26,9 +26,6 @@ export default function Navbar( ) {
         handleLogOut( );
       }
     }
-
-    console.log("USERNAme", userName)
-
     return (
       <>
         <Box px={4} mb={20} className='ChackraNavBar' shadow='lg' borderBottom={{base : '0px', md :'1px solid black'}} padding='10px'>

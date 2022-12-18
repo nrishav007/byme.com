@@ -5,9 +5,10 @@ import { AuthContext } from "../context/AppContext"
 
 
 export const PrivateRoute=({children})=>{
-    const {user}=useContext(AuthContext);
+    const {user,user_Auth}=useContext(AuthContext);
     const token = localStorage.getItem("logintoken");
-    if(!user || !token){
+    
+    if(!user && !user_Auth.user_Auth){
         return <Navigate to="/login"/>
     }
     return children
