@@ -17,7 +17,7 @@ export class Helpbot extends Component {
       window.kommunicate = m;
       m._globals = kommunicateSettings;
     })(document, window.kommunicate || {});
-    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+   
   }
 
   render() {
@@ -29,3 +29,5 @@ export class Helpbot extends Component {
   }
 }
 
+
+ /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
