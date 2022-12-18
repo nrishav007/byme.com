@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 export class Helpbot extends Component {
   componentDidMount() {
     (function (d, m) {
@@ -19,6 +20,8 @@ export class Helpbot extends Component {
     })(document, window.kommunicate || {});
    
   }
+
+
 
   render() {
     return (
