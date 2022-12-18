@@ -9,7 +9,7 @@
     padding: 30px;
     display:  grid;
     grid-template-columns: 0.9fr 1.1fr;
-    border: 1px solid rgb(125, 30, 30);
+    border: 1px solid rgb(205, 204, 204);
     margin-top: 70px;
     gap: 30px;
 }

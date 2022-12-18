@@ -234,7 +234,6 @@ const Details = () => {
     
 
 
-
      <section className='product-info'>
        <ul className='product-info-menu'>
           {
