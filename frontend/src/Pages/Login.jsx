@@ -73,14 +73,14 @@ import axios from "axios";
         password:`${user.user.displayName.split(" ")[0]}@byme`
       }
       axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
-        console.log("login",res)
+        console.log(res.data)
           if(res.status===200){
            const  login_payload={
             email:user.user.email,
-            password:`${user.user.displayName.split(" ")[0]}@byme`
+        password:`${user.user.displayName.split(" ")[0]}@byme`
            }
             axios.post("https://coral-perch-cuff.cyclic.app/login",login_payload).then((res)=>{
-              localStorage.setItem("logintoken",res.data.token);
+              
             })
           }
         })

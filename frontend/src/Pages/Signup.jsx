@@ -58,34 +58,34 @@ import {
       e.preventDefault();
       try {
      const user= await googleSignIn();
-     console.log(user);
-     if(user.email!==undefined){
+     console.log("from signup",user);
+     if(user.user.email!==undefined){
       const payload={
-        name:user.displayName,
-        email:user.email,
-        password:`${user.displayName.split(" ")[0]}@byme`
+        name:user.user.displayName,
+        email:user.user.email,
+        password:`${user.user.displayName.split(" ")[0]}@byme`
       }
       axios.post("https://coral-perch-cuff.cyclic.app/signup",payload).then((res)=>{
         console.log(res.data)
           if(res.status===200){
            const  login_payload={
-            email:user.email,
-        password:`${user.displayName.split(" ")[0]}@byme`
+            email:user.user.email,
+        password:`${user.user.displayName.split(" ")[0]}@byme`
            }
             axios.post("https://coral-perch-cuff.cyclic.app/login",login_payload).then((res)=>{
-              console.log(res)
+              
             })
           }
         })
-      console.log("byme",user.email, user.displayName)
     }
+    navigateUser("/");
      toast({
         position : 'top',
         colorScheme : 'green', 
         status : "success",
         title:"Login sucessfully "
     })
-        navigateUser("/login");
+        
       } catch (error) {
         console.log(error.message);
       }
