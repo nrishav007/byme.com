@@ -5,6 +5,7 @@ import Details from './Details'
 
 
 export const Single = () => {
+  
   return (
     <div className='container'>
  
