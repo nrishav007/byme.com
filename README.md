@@ -61,6 +61,7 @@ Backend
 - **Mongoose**
 - **MongoDB**
 - **Express**
+-- **JWT**
 
 A Group project build by 4 Developers, executed in 4 Days.
 
