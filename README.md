@@ -63,7 +63,7 @@ Backend
 - **Express**
 - **JWT**
 
-A Group project build by 4 Developers, executed in 4 Days.
+A Collaborative project build by 4 Developers, executed in 4 Days.
 
 ## Developers
 - **[Abrar Khan](https://github.com/heyabrar)**
